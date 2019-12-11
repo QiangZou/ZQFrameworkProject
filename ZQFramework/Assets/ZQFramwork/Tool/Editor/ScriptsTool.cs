@@ -8,7 +8,7 @@ using System;
 public class ScriptsTool : EditorWindow
 {
     //添加菜单项 &#1 Shift+Alt+2
-    [MenuItem("ZouQiang/Scripts(脚本)/检查脚本中的中文")]
+    [MenuItem("ZQ/Scripts(脚本)/检查脚本中的中文")]
     static void CheckScriptsChinese()
     {
         //获取项目Assets下所有文件路径

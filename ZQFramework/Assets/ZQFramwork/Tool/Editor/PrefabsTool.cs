@@ -9,7 +9,7 @@ using System.Text;
 public class PrefabsTool : EditorWindow
 {
     //添加菜单项 &#1 Shift+Alt+2
-    [MenuItem("ZouQiang/Prefab(预设)/检查预设为空")]
+    [MenuItem("ZQ/Prefab(预设)/检查预设为空")]
     static void CheckNullPrefab()
     {
         List<string> paths = EditorHelper.GetAllFilePaths();
@@ -50,7 +50,7 @@ public class PrefabsTool : EditorWindow
     }
 
 
-    [MenuItem("ZouQiang/Prefab(预设)/检查预设中文")]
+    [MenuItem("ZQ/Prefab(预设)/检查预设中文")]
     static void CheckChinesePrefabs()
     {
         List<string> paths = EditorHelper.GetAllFilePaths();
@@ -100,7 +100,7 @@ public class PrefabsTool : EditorWindow
         Debug.Log("完成检查预设中文");
     }
 
-    [MenuItem("ZouQiang/Prefab(预设)/检查预设中文并且生成文本")]
+    [MenuItem("ZQ/Prefab(预设)/检查预设中文并且生成文本")]
     static void CheckChinesePrefabsAndSerialization()
     {
         List<string> paths = EditorHelper.GetAllFilePaths();
@@ -158,7 +158,7 @@ public class PrefabsTool : EditorWindow
     }
 
 
-    [MenuItem("ZouQiang/Prefab(预设)/检查预设中文并且删除中文")]
+    [MenuItem("ZQ/Prefab(预设)/检查预设中文并且删除中文")]
     static void CheckChinesePrefabsAndDeleteChinese()
     {
         List<string> paths = EditorHelper.GetAllFilePaths();

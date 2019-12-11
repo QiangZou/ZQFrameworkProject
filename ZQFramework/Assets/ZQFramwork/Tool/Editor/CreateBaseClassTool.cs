@@ -39,7 +39,7 @@ using System.Collections;
     #endregion
 
     //添加菜单项 &#1 Shift+Alt+1
-    [MenuItem("ZouQiang/UI/创建组件索引类 &#1")]
+    [MenuItem("ZQ/UI/创建组件索引类 &#1")]
     static public void OpenWindow()
     {
         GameObject gameObject = Selection.activeGameObject;

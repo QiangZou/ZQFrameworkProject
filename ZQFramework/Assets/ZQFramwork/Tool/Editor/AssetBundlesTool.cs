@@ -58,7 +58,7 @@ namespace ZouQiang
         /// <summary>
         /// 设置资源名字
         /// </summary>
-        [MenuItem("ZouQiang/AssetBundles/设置名字")]
+        [MenuItem("ZQ/AssetBundles/设置名字")]
         static void SetAssetBundleName()
         {
             CleanAllBundleNames();
@@ -98,7 +98,7 @@ namespace ZouQiang
             Debug.Log("SetAssetBundleName Succeed ");
         }
 
-        [MenuItem("ZouQiang/AssetBundles/打包")]
+        [MenuItem("ZQ/AssetBundles/打包")]
         static void BuildAssetBundles()
         {
             //若文件夹不存在则新建文件夹  
