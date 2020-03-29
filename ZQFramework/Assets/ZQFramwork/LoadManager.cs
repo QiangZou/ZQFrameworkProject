@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-namespace ZouQiang
+namespace ZQFramwork
 {
     public enum LoadType
     {

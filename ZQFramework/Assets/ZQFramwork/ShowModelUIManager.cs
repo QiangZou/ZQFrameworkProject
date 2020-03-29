@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEditor;
 #endif
 
-namespace ZouQiang
+namespace ZQFramwork
 {
 #if UNITY_EDITOR
     [CustomEditor(typeof(ShowModelUIManager))]

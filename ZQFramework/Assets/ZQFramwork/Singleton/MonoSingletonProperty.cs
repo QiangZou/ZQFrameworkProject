@@ -1,6 +1,6 @@
 
 
-namespace ZouQiang
+namespace ZQFramwork
 {
 	using UnityEngine;
 

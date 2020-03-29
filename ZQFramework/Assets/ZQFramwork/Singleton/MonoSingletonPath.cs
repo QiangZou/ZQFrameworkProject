@@ -1,4 +1,4 @@
-namespace ZouQiang
+namespace ZQFramwork
 {
     using System;
 

@@ -1,4 +1,4 @@
-namespace ZouQiang
+namespace ZQFramwork
 {
     //抽象类Singleton
     public abstract class Singleton<T> : ISingleton where T : Singleton<T>

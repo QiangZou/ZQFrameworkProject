@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System;
 
-namespace ZouQiang
+namespace ZQFramwork
 {
     public class AsyncTask
     {

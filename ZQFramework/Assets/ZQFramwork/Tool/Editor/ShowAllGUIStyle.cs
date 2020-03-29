@@ -1,64 +1,67 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public class ShowAllGUIStyle : EditorWindow
+namespace ZQFramwork
 {
-    private Vector2 scrollVector2 = Vector2.zero;
-
-
-    [MenuItem("ZQ/工具/查看所有GUIStyle", false)]
-    static void OpenWindow()
+    public class ShowAllGUIStyle : EditorWindow
     {
-        EditorWindow window = GetWindow(typeof(ShowAllGUIStyle));
-        window.minSize = new Vector2(300, 900);
-    }
+        private Vector2 scrollVector2 = Vector2.zero;
 
-    string search = string.Empty;
-
-    void OnGUI()
-    {
-        EditorGUILayout.Space();
-
-        EditorGUILayout.BeginHorizontal();
-
-        search = EditorGUILayout.TextField("", search, "ToolbarSeachTextField");
-
-        if (GUILayout.Button("", "ToolbarSeachCancelButton"))
+        [MenuItem("ZQFramwork/工具/查看所有GUIStyle", false)]
+        static void OpenWindow()
         {
-            search = string.Empty;
+            EditorWindow window = GetWindow(typeof(ShowAllGUIStyle));
+            window.minSize = new Vector2(300, 900);
         }
 
-        EditorGUILayout.EndHorizontal();
+        string search = string.Empty;
 
-        EditorGUILayout.Space();
-
-
-
-
-
-
-        scrollVector2 = GUILayout.BeginScrollView(scrollVector2);
-
-        foreach (GUIStyle style in GUI.skin.customStyles)
+        void OnGUI()
         {
-            if (search == string.Empty || style.name.Contains(search))
+            EditorGUILayout.Space();
+
+            EditorGUILayout.BeginHorizontal();
+
+            search = EditorGUILayout.TextField("", search, "ToolbarSeachTextField");
+
+            if (GUILayout.Button("", "ToolbarSeachCancelButton"))
             {
-                DrawStyleItem(style);
+                search = string.Empty;
             }
 
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.Space();
+
+
+
+
+
+
+            scrollVector2 = GUILayout.BeginScrollView(scrollVector2);
+
+            foreach (GUIStyle style in GUI.skin.customStyles)
+            {
+                if (search == string.Empty || style.name.Contains(search))
+                {
+                    DrawStyleItem(style);
+                }
+
+            }
+
+            GUILayout.EndScrollView();
         }
 
-        GUILayout.EndScrollView();
-    }
+        void DrawStyleItem(GUIStyle style)
+        {
+            EditorGUILayout.BeginVertical("box");
 
-    void DrawStyleItem(GUIStyle style)
-    {
-        EditorGUILayout.BeginVertical("box");
+            EditorGUILayout.SelectableLabel(style.name);
 
-        EditorGUILayout.SelectableLabel(style.name);
+            GUILayout.Button("", style);
 
-        GUILayout.Button("", style);
-
-        EditorGUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
+        }
     }
 }
+

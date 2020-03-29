@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace ZouQiang
+namespace ZQFramwork
 {
     public class PoolManager : MonoBehaviour
     {

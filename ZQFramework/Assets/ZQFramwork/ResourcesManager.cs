@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ZouQiang
+namespace ZQFramwork
 {
     public class ResourcesManager : MonoSingleton<ResourcesManager> 
     {

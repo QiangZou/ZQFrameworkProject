@@ -12,7 +12,7 @@ namespace ZQ.AdapterTool
     {
         public static Image image = null;
 
-        [MenuItem("ZQ/AdapterTool/一键生成到桌面", false, 0)]
+        [MenuItem("ZQFramwork/AdapterTool/一键生成到桌面", false, 0)]
         private static void Onekey()
         {
             InitImage();

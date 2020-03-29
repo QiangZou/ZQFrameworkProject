@@ -1,4 +1,4 @@
-namespace ZouQiang
+namespace ZQFramwork
 {
     /// <summary>
     /// 单例属性（给单例要继承其它的类使用）

@@ -11,8 +11,8 @@ public static class FindreAssetFerencesTool
     static string[] allAssetPaths;
     static Thread thread;
 
-    [MenuItem("ZQ/工具/查找资源引用", false)]
-    [MenuItem("Assets/ZQ/工具/查找资源引用", false, 1)]
+    [MenuItem("ZQFramwork/工具/查找资源引用", false)]
+    [MenuItem("Assets/ZQFramwork/工具/查找资源引用", false, 1)]
     static void FindreAssetFerencesMenu()
     {
         Debug.LogError("查找资源引用");

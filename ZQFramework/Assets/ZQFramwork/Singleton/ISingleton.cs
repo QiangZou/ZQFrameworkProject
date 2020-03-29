@@ -1,4 +1,4 @@
-namespace ZouQiang
+namespace ZQFramwork
 {
     //½Ó¿ÚISingleton
     public interface ISingleton

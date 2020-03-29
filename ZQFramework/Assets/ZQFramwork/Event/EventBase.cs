@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ZouQiang;
+using ZQFramwork;
 
 public class EventBase 
 {

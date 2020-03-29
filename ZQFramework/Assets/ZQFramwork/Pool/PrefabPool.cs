@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ZouQiang
+namespace ZQFramwork
 {
     //[System.Serializable]
     public class PrefabPool

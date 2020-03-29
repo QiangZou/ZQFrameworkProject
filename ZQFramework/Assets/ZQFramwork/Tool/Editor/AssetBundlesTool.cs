@@ -3,7 +3,7 @@ using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
 
-namespace ZouQiang
+namespace ZQFramwork
 {
     public class AssetBundlesTool : Editor
     {
@@ -58,7 +58,7 @@ namespace ZouQiang
         /// <summary>
         /// 设置资源名字
         /// </summary>
-        [MenuItem("ZQ/AssetBundles/设置名字")]
+        [MenuItem("ZQFramwork/AssetBundles/设置名字")]
         static void SetAssetBundleName()
         {
             CleanAllBundleNames();
@@ -98,7 +98,7 @@ namespace ZouQiang
             Debug.Log("SetAssetBundleName Succeed ");
         }
 
-        [MenuItem("ZQ/AssetBundles/打包")]
+        [MenuItem("ZQFramwork/AssetBundles/打包")]
         static void BuildAssetBundles()
         {
             //若文件夹不存在则新建文件夹  

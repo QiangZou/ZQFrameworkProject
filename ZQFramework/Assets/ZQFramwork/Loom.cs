@@ -3,7 +3,7 @@ using System.Threading;
 using UnityEngine;
 using System.Collections;
 
-namespace ZouQiang
+namespace ZQFramwork
 {
     public class Loom : MonoBehaviour
     {
