@@ -33,11 +33,6 @@ namespace ZQFramwork
 
             EditorGUILayout.Space();
 
-
-
-
-
-
             scrollVector2 = GUILayout.BeginScrollView(scrollVector2);
 
             foreach (GUIStyle style in GUI.skin.customStyles)
