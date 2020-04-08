@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,6 +23,23 @@ namespace ZQFramwork
                 }
 
             }
+        }
+
+        [MenuItem("ZQFramwork/工具/检查文件名非法1")]
+        static void Check1()
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(Application.dataPath);
+
+            foreach (var item in directoryInfo.GetDirectories())
+            {
+                Debug.LogError(item.Name);
+            }
+
+            foreach (var item in directoryInfo.GetFiles())
+            {
+                Debug.LogError(item.Name);
+            }
+
         }
 
         static bool IsIllegal(string str)
