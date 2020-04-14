@@ -33,6 +33,10 @@ public class ProjectManagerWindow : EditorWindow
         if (GUILayout.Button("一键检查", GUILayout.MinHeight(100f)))
         {
             Debug.LogError("一键检查");
+            ProjectManagerConfig ProjectManagerConfig = ProjectManagerConfigManager.Get();
+            Debug.Log(ProjectManagerConfig.size);
+
+            ProjectManagerConfig.size = new Vector2(1, 1);
         }
 
         if (GUILayout.Button("文件命名规范", "DropDownButton"))
@@ -46,11 +50,11 @@ public class ProjectManagerWindow : EditorWindow
         //GUILayout.Button("文件命名规范", GUILayout.MinHeight(30f));
         //EditorGUILayout.EndHorizontal();
 
-        //EditorGUILayout.ToggleLeft("文件命名规范", true);
-        //EditorGUILayout.ToggleLeft("预设文件包含空组建", true);
-        //EditorGUILayout.ToggleLeft("未引用组建", true);
-        //EditorGUILayout.ToggleLeft("重复资源", true);
-        //EditorGUILayout.ToggleLeft("SVN冲突文件", true);
+        EditorGUILayout.ToggleLeft("文件命名规范", true);
+        EditorGUILayout.ToggleLeft("预设文件包含空组建", true);
+        EditorGUILayout.ToggleLeft("未引用组建", true);
+        EditorGUILayout.ToggleLeft("重复资源", true);
+        EditorGUILayout.ToggleLeft("SVN冲突文件", true);
 
         //if (Event.current.type == EventType.MouseDown)
         //{
