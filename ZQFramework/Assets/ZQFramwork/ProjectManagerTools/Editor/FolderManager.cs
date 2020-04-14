@@ -14,19 +14,18 @@ namespace ZQFramwork
             Debug.Log(char.IsLetter('看'));
         }
 
-        private static Folder folder;
+        private static Folders folder;
 
-        public static Folder Folder
+        public static Folders Folder
         {
             get
             {
                 if (folder == null)
                 {
-                    folder = new Folder(Application.dataPath);
+                    folder = new Folders(Application.dataPath);
                 }
                 return folder;
             }
-
         }
 
         private static List<string> paths;
@@ -42,7 +41,7 @@ namespace ZQFramwork
             }
         }
 
-        static void CheckFolderName(Folder folder, List<string> paths)
+        static void CheckFolderName(Folders folder, List<string> paths)
         {
             foreach (var item in folder.dicFileSystemInfo)
             {

@@ -12,7 +12,7 @@ using UnityEngine;
 /// <summary>
 /// 文件夹
 /// </summary>
-public class Folder
+public class Folders
 {
     /// <summary>
     /// 当前目录信息
@@ -21,7 +21,7 @@ public class Folder
     /// <summary>
     /// 当前文件夹中的文件夹
     /// </summary>
-    public List<Folder> listFolder;
+    public List<Folders> listFolder;
     /// <summary>
     /// 当前文件夹的文件
     /// </summary>
@@ -31,14 +31,14 @@ public class Folder
     /// </summary>
     public Dictionary<string, FileSystemInfo> dicFileSystemInfo;
 
-    public Folder(string path)
+    public Folders(string path)
     {
         currentDirectoryInfo = new DirectoryInfo(path);
 
         Init();
     }
 
-    Folder(DirectoryInfo directoryInfo)
+    Folders(DirectoryInfo directoryInfo)
     {
         currentDirectoryInfo = directoryInfo;
 
@@ -52,10 +52,10 @@ public class Folder
         {
             listFileInfo.Add(item);
         }
-        listFolder = new List<Folder>();
+        listFolder = new List<Folders>();
         foreach (var item in currentDirectoryInfo.GetDirectories())
         {
-            listFolder.Add(new Folder(item));
+            listFolder.Add(new Folders(item));
         }
 
         dicFileSystemInfo = new Dictionary<string, FileSystemInfo>();

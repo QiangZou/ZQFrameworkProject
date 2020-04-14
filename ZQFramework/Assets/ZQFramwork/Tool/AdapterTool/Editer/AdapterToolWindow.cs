@@ -168,11 +168,11 @@ namespace ZQ.AdapterTool
             DestroyImage();
         }
 
-        private static string saveKey { get { return "AdapterTool " + Application.dataPath; } }
+        private static string SaveKey { get { return "AdapterTool " + Application.dataPath; } }
 
         private static string GetAssetPath(string name)
         {
-            string data = EditorPrefs.GetString(saveKey, "");
+            string data = EditorPrefs.GetString(SaveKey, "");
 
             if (string.IsNullOrEmpty(data))
             {
@@ -184,7 +184,7 @@ namespace ZQ.AdapterTool
                     {
                         data = s.Substring(0, s.LastIndexOf('/') + 1);
 
-                        EditorPrefs.SetString(saveKey, data);
+                        EditorPrefs.SetString(SaveKey, data);
 
                         break;
                     }
