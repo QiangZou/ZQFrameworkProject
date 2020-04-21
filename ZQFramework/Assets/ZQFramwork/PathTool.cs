@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public static class Path
+public static class PathTool
 {
     public static string assetBundleSavePath
     {

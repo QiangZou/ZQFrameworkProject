@@ -11,7 +11,7 @@ public class UnityLocalAssetBundle : IAssetLoad
 
     void Init()
     {
-        AssetBundle assetBundle = AssetBundle.LoadFromFile(Path.assetBundleSavePath + "/AssetBundles");
+        AssetBundle assetBundle = AssetBundle.LoadFromFile(PathTool.assetBundleSavePath + "/AssetBundles");
         manifest = assetBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         assetBundle.Unload(false);
         assetBundle = null;
@@ -30,7 +30,7 @@ public class UnityLocalAssetBundle : IAssetLoad
         string name = System.IO.Path.GetFileName(path);
 
         //加载路径
-        string newPath = Path.assetBundleSavePath + "/" + path;
+        string newPath = PathTool.assetBundleSavePath + "/" + path;
 
         AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(newPath);
         yield return request;
@@ -42,7 +42,7 @@ public class UnityLocalAssetBundle : IAssetLoad
 
         for (int i = 0; i < dependencies.Length; i++)
         {
-            AssetBundleCreateRequest dependence = AssetBundle.LoadFromFileAsync(Path.assetBundleSavePath + "/" + dependencies[i]);
+            AssetBundleCreateRequest dependence = AssetBundle.LoadFromFileAsync(PathTool.assetBundleSavePath + "/" + dependencies[i]);
 
             yield return dependence;
         }

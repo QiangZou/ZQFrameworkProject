@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-//public class File
-//{
-//    public DirectoryInfo directoryInfo;
-//    public FileInfo fileInfo;
-//}
-
 /// <summary>
 /// 文件夹
 /// </summary>
@@ -26,6 +20,7 @@ public class Folders
     /// 当前文件夹的文件
     /// </summary>
     public List<FileInfo> listFileInfo;
+
     /// <summary>
     /// 当前文件夹中所有文件
     /// </summary>
@@ -45,7 +40,7 @@ public class Folders
         Init();
     }
 
-    void Init()
+    private void Init()
     {
         listFileInfo = new List<FileInfo>();
         foreach (var item in currentDirectoryInfo.GetFiles())

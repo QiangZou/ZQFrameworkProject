@@ -1,41 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ZQFramwork;
+using System.Threading;
+
 
 public class Test : MonoBehaviour
 {
 
-    public long number;
+    private static Test instance;
 
     // Use this for initialization
     void Start()
     {
 
-        //Debug.Log(NumberUtil.GetChineseNumbers(1));
-        //Debug.Log(NumberUtil.GetChineseNumbers(11));
-        //Debug.Log(NumberUtil.GetChineseNumbers(111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(1111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(11111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(1111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(11111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(1111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(11111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(1111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(1111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(11111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(111111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(1111111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(11111111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(111111111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(1111111111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(11111111111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(111111111111111111111111));
-        //Debug.Log(NumberUtil.GetChineseNumbers(1111111111111111111111111));
+        Thread thr1 = new Thread(Th_test1);
+        Thread thr2 = new Thread(Th_test2);
+        Thread thr3 = new Thread(Th_test3);
+
+
+        thr1.Start("参数");
+        thr2.Start();
+        thr3.Start();
+
+
+    }
+
+    void Th_test1(object data)
+    {
+        print("Th_test1" + data);
+    }
+
+    void Th_test2()
+    {
+        print("Th_test2");
+
+
+    }
+    void Th_test3()
+    {
+        print("Th_test3");
+
+
     }
 
     // Update is called once per frame
@@ -43,9 +48,5 @@ public class Test : MonoBehaviour
     {
 
     }
-
-    private void OnEnable()
-    {
-        //Debug.Log(NumberUtil.GetChineseNumbers(number));
-    }
 }
+
