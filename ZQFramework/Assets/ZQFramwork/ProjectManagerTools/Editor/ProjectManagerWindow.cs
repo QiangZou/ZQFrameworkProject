@@ -28,6 +28,49 @@ public class ProjectManagerWindow : EditorWindow
         }
     }
 
+    List<FileSystemInfo> illegalFiles;
+
+    private void ShowLllegalFiles()
+    {
+        if (illegalFiles == null)
+        {
+            return;
+        }
+
+        foreach (var item in illegalFiles)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.SelectableLabel(Path.GetFileNameWithoutExtension(item.Name));
+            if (GUILayout.Button("定位"))
+            {
+                //Object obj = AssetDatabase.LoadMainAssetAtPath(item.FullName);
+
+                string path = item.FullName.Substring(item.FullName.IndexOf("Assets/"), item.FullName.Length - item.FullName.IndexOf("Assets/"));
+
+                Debug.LogError(path);
+                Object obj = AssetDatabase.LoadMainAssetAtPath(path);
+                
+                Selection.activeObject = obj;
+            }
+            if (GUILayout.Button("打开目录"))
+            {
+
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        //GUILayout.Box(new GUIContent("一个200x200的BOX"), new[] { GUILayout.Height(200), GUILayout.Width(200) });
+
+        //GUILayout.BeginArea(new Rect(200, 200, 100, 100), "GroupBox");
+
+        //GUILayout.Button("Click me", "GroupBox");
+
+        //GUILayout.Button("Or me");
+
+        //GUILayout.EndArea();
+    }
+
 
     private void ShowOneKeyCheck()
     {
@@ -35,11 +78,11 @@ public class ProjectManagerWindow : EditorWindow
         {
             Debug.LogError("一键检查");
 
-            List<FileSystemInfo> files = new List<FileSystemInfo>();
+            illegalFiles = new List<FileSystemInfo>();
 
-            FoldersTool.CheckFolderName(FoldersTool.Folder, files, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
+            FoldersTool.CheckFolderName(FoldersTool.Folder, illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
 
-            foreach (var item in files)
+            foreach (var item in illegalFiles)
             {
                 Debug.LogError(item.Name);
             }
@@ -65,8 +108,12 @@ public class ProjectManagerWindow : EditorWindow
         }
     }
 
+    private Vector2 scrollVector2 = Vector2.zero;
+
     private void OnGUI()
     {
+        scrollVector2 = GUILayout.BeginScrollView(scrollVector2);
+
         //代码刷新 引用丢失
         if (projectManagerConfig == null)
         {
@@ -77,6 +124,8 @@ public class ProjectManagerWindow : EditorWindow
         ShowOneKeyCheck();
 
         ShowCheckFileName();
+
+        ShowLllegalFiles();
 
         //EditorGUILayout.EndHorizontal();
 
@@ -108,6 +157,6 @@ public class ProjectManagerWindow : EditorWindow
 
         //    GUI.FocusControl(null);
         //}
-
+        GUILayout.EndScrollView();
     }
 }
