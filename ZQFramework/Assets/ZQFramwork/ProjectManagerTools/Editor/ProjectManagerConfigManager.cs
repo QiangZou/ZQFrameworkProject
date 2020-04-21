@@ -19,6 +19,12 @@ public static class ProjectManagerConfigManager
         return config;
     }
 
+    public static void Save()
+    {
+        EditorUtility.SetDirty(config);//标记目标物体已改变
+        AssetDatabase.SaveAssets();
+    }
+
     static string GetAssetPath()
     {
         string path = EditorPrefs.GetString(SaveKey, "");

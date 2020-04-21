@@ -59,7 +59,14 @@ public static class FoldersTool
         }
     }
 
+    public static string GetLoadPath(string filePath)
+    {
+        string path = filePath.Replace('\\', '/');
 
+        path = path.Replace(Application.dataPath, "Assets");
+
+        return path;
+    }
 
     static bool IsLegal(string str, List<char> ignoreChar)
     {

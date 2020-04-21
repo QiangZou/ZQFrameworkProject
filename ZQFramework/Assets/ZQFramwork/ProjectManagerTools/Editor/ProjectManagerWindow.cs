@@ -43,13 +43,10 @@ public class ProjectManagerWindow : EditorWindow
             EditorGUILayout.SelectableLabel(Path.GetFileNameWithoutExtension(item.Name));
             if (GUILayout.Button("定位"))
             {
-                //Object obj = AssetDatabase.LoadMainAssetAtPath(item.FullName);
+                string path = FoldersTool.GetLoadPath(item.FullName);
 
-                string path = item.FullName.Substring(item.FullName.IndexOf("Assets/"), item.FullName.Length - item.FullName.IndexOf("Assets/"));
-
-                Debug.LogError(path);
                 Object obj = AssetDatabase.LoadMainAssetAtPath(path);
-                
+
                 Selection.activeObject = obj;
             }
             if (GUILayout.Button("打开目录"))
@@ -158,5 +155,13 @@ public class ProjectManagerWindow : EditorWindow
         //    GUI.FocusControl(null);
         //}
         GUILayout.EndScrollView();
+    }
+
+
+
+    void OnDestroy()
+    {
+        Debug.LogError("保持");
+        ProjectManagerConfigManager.Save();
     }
 }

@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5f801dc114ca340866d0e0f7116992, type: 3}
   m_Name: ProjectManagerConfig
   m_EditorClassIdentifier: 
-  windowSize: {x: 500, y: 800}
+  windowSize: {x: 1111, y: 800}
   checkFileName:
     isFold: 1
     ignoreFilePath: []
     ignoreDirectoryPath: []
-    legal: ' _-@('
+    legal: "\u554A\u554A\u554A\u554A"
