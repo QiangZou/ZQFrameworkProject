@@ -51,7 +51,7 @@ public class ProjectManagerWindow : EditorWindow
             }
             if (GUILayout.Button("打开目录"))
             {
-
+                EditorUtility.RevealInFinder(item.FullName);
             }
 
             EditorGUILayout.EndHorizontal();

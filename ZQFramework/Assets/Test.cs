@@ -13,14 +13,17 @@ public class Test : MonoBehaviour
     void Start()
     {
 
-        Thread thr1 = new Thread(Th_test1);
-        Thread thr2 = new Thread(Th_test2);
-        Thread thr3 = new Thread(Th_test3);
+        //OpenDirectoryUtils.Open("C:\\");
 
 
-        thr1.Start("参数");
-        thr2.Start();
-        thr3.Start();
+        //Thread thr1 = new Thread(Th_test1);
+        //Thread thr2 = new Thread(Th_test2);
+        //Thread thr3 = new Thread(Th_test3);
+
+
+        //thr1.Start("参数");
+        //thr2.Start();
+        //thr3.Start();
 
 
     }
