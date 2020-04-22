@@ -73,16 +73,11 @@ public class ProjectManagerWindow : EditorWindow
     {
         if (GUILayout.Button("一键检查", GUILayout.MinHeight(100f)))
         {
-            Debug.LogError("一键检查");
-
             illegalFiles = new List<FileSystemInfo>();
 
             FoldersTool.CheckFolderName(FoldersTool.Folder, illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
+            
 
-            foreach (var item in illegalFiles)
-            {
-                Debug.LogError(item.Name);
-            }
         }
     }
 
@@ -161,7 +156,6 @@ public class ProjectManagerWindow : EditorWindow
 
     void OnDestroy()
     {
-        Debug.LogError("保持");
         ProjectManagerConfigManager.Save();
     }
 }

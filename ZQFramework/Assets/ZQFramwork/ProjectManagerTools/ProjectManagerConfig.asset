@@ -16,4 +16,4 @@ MonoBehaviour:
     isFold: 1
     ignoreFilePath: []
     ignoreDirectoryPath: []
-    legal: "\u554A\u554A\u554A\u554A"
+    legal: ' _-'
