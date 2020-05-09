@@ -12,9 +12,7 @@ public class Test : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         //OpenDirectoryUtils.Open("C:\\");
-
 
         //Thread thr1 = new Thread(Th_test1);
         //Thread thr2 = new Thread(Th_test2);
