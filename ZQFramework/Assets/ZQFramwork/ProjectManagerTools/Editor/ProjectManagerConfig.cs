@@ -10,6 +10,8 @@ public class CheckRegulation
 {
     public bool isFold = false;
 
+    public float lastTime = 0;
+
     public List<string> ignoreFilePath = new List<string>();
     public List<string> ignoreDirectoryPath = new List<string>();
 

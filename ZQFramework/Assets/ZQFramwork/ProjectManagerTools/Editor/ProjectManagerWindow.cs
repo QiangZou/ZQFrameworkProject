@@ -37,8 +37,16 @@ public class ProjectManagerWindow : EditorWindow
             return;
         }
 
-        foreach (var item in illegalFiles)
+        for (int i = 0; i < illegalFiles.Count; i++)
         {
+            //防止加载太多导致很卡
+            if (i >= 99)
+            {
+                break;
+            }
+
+            FileSystemInfo item = illegalFiles[i];
+
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.SelectableLabel(Path.GetFileNameWithoutExtension(item.Name));
             if (GUILayout.Button("定位"))
@@ -76,7 +84,7 @@ public class ProjectManagerWindow : EditorWindow
             illegalFiles = new List<FileSystemInfo>();
 
             FoldersTool.CheckFolderName(FoldersTool.Folder, illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
-            
+
 
         }
     }
