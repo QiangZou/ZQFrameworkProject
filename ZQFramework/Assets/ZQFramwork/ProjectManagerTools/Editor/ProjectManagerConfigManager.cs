@@ -12,8 +12,13 @@ public static class ProjectManagerConfigManager
     {
         if (config == null)
         {
-            //Debug.LogError(GetAssetPath());
-            config = AssetDatabase.LoadAssetAtPath<ProjectManagerConfig>(GetAssetPath());
+            string path = GetAssetPath();
+            config = AssetDatabase.LoadAssetAtPath<ProjectManagerConfig>(path);
+        }
+        if (config == null)
+        {
+            string path = GetNewAssetPath();//因为路径变动导致错误 重新获取新路径
+            config = AssetDatabase.LoadAssetAtPath<ProjectManagerConfig>(path);
         }
 
         return config;
@@ -31,22 +36,31 @@ public static class ProjectManagerConfigManager
 
         if (string.IsNullOrEmpty(path))
         {
-            string[] allAssetPaths = AssetDatabase.GetAllAssetPaths();
-            foreach (var item in allAssetPaths)
-            {
-                if (item.Contains("ProjectManagerTools/ProjectManagerConfig.asset"))
-                {
-                    path = item;
-
-                    EditorPrefs.SetString(SaveKey, path);
-
-                    break;
-                }
-            }
+            path = GetNewAssetPath();
         }
         return path;
     }
 
+
+    static string GetNewAssetPath()
+    {
+        string path = string.Empty;
+
+        string[] allAssetPaths = AssetDatabase.GetAllAssetPaths();
+
+        foreach (var item in allAssetPaths)
+        {
+            if (item.Contains("ProjectManagerTools/ProjectManagerConfig.asset"))
+            {
+                path = item;
+
+                EditorPrefs.SetString(SaveKey, path);
+
+                return path;
+            }
+        }
+        return path;
+    }
 
 
     private static string GetAssetPath(string name)

@@ -1,16 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseModel
+namespace ZQFramwork
 {
-    /// <summary>
+  
+   public class BaseModel
+ /// <summary>
     ///注册消息
     /// </summary>
     protected void RegisterMessage()
-    {
-
-    }
 
     /// <summary>
     /// 模块打开
@@ -28,4 +26,5 @@ public class BaseModel
 
     }
 
+    }
 }

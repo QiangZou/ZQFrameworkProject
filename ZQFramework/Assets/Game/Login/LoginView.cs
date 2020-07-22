@@ -1,9 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class LoginView : BaseView
+
+using ZQFramwork;
+public class LoginView : BaseView
+
 {
     public InputField z;
     public InputField m;

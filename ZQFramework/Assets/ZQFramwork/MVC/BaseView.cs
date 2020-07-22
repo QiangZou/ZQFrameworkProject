@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseView : BaseBehaviour
+namespace ZQFramwork
 {
-    public BaseViewData baseViewData;
+    public class BaseView : BaseBehaviour
+    {
+        public BaseViewData baseViewData;
 
 
+    }
 }

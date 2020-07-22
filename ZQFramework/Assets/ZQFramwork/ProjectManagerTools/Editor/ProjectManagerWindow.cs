@@ -83,7 +83,14 @@ public class ProjectManagerWindow : EditorWindow
         {
             illegalFiles = new List<FileSystemInfo>();
 
-            FoldersTool.CheckFolderName(FoldersTool.Folder, illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
+            FoldersTool.Folder();//提前初始化 防止线程不能调用unity api
+
+            ThreadTask threadTask = new ThreadTask(() =>
+            {
+                FoldersTool.CheckFolderName(FoldersTool.Folder(), illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
+            });
+
+            //FoldersTool.CheckFolderName(FoldersTool.Folder, illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
 
 
         }
@@ -91,7 +98,7 @@ public class ProjectManagerWindow : EditorWindow
 
     private void ShowCheckFileName()
     {
-        if (GUILayout.Button("文件命名规范", "DropDownButton"))
+        if (GUILayout.Button("文件命名规范配置", "DropDownButton"))
         {
             projectManagerConfig.checkFileName.isFold = !projectManagerConfig.checkFileName.isFold;
         }

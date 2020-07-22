@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[Serializable]
-public class BaseViewData 
+namespace ZQFramwork
 {
-    
+    [Serializable]
+    public class BaseViewData
+    {
+
+    }
 }

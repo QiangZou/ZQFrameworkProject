@@ -7,16 +7,13 @@ public static class FoldersTool
 {
     private static Folders folder;
 
-    public static Folders Folder
+    public static Folders Folder()
     {
-        get
+        if (folder == null)
         {
-            if (folder == null)
-            {
-                folder = new Folders(Application.dataPath);
-            }
-            return folder;
+            folder = new Folders(Application.dataPath);
         }
+        return folder;
     }
 
 
@@ -25,7 +22,7 @@ public static class FoldersTool
     {
         List<FileSystemInfo> files = new List<FileSystemInfo>();
 
-        CheckFolderName(Folder, files, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
+        CheckFolderName(Folder(), files, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
 
         foreach (var item in files)
         {

@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseModelData
+namespace ZQFramwork
 {
+    public class BaseModelData
+    {
 
+    }
 }

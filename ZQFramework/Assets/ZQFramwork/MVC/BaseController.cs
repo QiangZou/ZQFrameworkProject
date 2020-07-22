@@ -1,11 +1,15 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseController
+namespace ZQFramwork
 {
-    public virtual void Open()
+   public virtual void Open()
     {
         Debug.Log("Open");
+    }
+}
+   public class BaseController
+    {
+
     }
 }

@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModuleDefineConfig
+namespace ZQFramwork
 {
-    public static ModuleDefine[] allModuleDefine = new ModuleDefine[]
+    public class ModuleDefineConfig
     {
-        new ModuleDefine()
+        public static ModuleDefine[] allModuleDefine = new ModuleDefine[]
         {
-            moduleID = ModuleID.Login,
-            BaseModel = new LoginModel(),
-            baseController = new LoginController(),
-            baseView = new LoginView(),
-        },
-        new ModuleDefine()
-        {
-            moduleID = ModuleID.Main,
-            BaseModel = new MainModel(),
-            baseController = new MainController(),
-            baseView = new MainView(),
-        }
-    };
+            //new ModuleDefine()
+            //{
+            //    moduleID = ModuleID.Login,
+            //    BaseModel = new LoginModel(),
+            //    baseController = new LoginController(),
+            //    baseView = new LoginView(),
+            //},
+            //new ModuleDefine()
+            //{
+            //    moduleID = ModuleID.Main,
+            //    BaseModel = new MainModel(),
+            //    baseController = new MainController(),
+            //    baseView = new MainView(),
+            //}
+        };
 
+    }
 }
+
+

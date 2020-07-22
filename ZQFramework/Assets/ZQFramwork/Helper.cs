@@ -9,104 +9,104 @@ public static class Helper
 
 
 
-    public static void SetUILabelText(UILabel label, string text)
-    {
-        if (label == null)
-        {
-            return;
-        }
+    //public static void SetUILabelText(UILabel label, string text)
+    //{
+    //    if (label == null)
+    //    {
+    //        return;
+    //    }
 
-        label.text = text;
-    }
+    //    label.text = text;
+    //}
 
-    public static void SetUILabelText(Transform transform, string text)
-    {
-        if (transform == null)
-        {
-            return;
-        }
+    //public static void SetUILabelText(Transform transform, string text)
+    //{
+    //    if (transform == null)
+    //    {
+    //        return;
+    //    }
 
-        UILabel label = transform.GetComponent<UILabel>();
+    //    UILabel label = transform.GetComponent<UILabel>();
 
-        SetUILabelText(label, text);
-    }
+    //    SetUILabelText(label, text);
+    //}
 
-    public static void SetUILabelText(Transform transform, string path, string text)
-    {
-        if (transform == null)
-        {
-            return;
-        }
+    //public static void SetUILabelText(Transform transform, string path, string text)
+    //{
+    //    if (transform == null)
+    //    {
+    //        return;
+    //    }
 
-        SetUILabelText(transform.Find(path), text);
-    }
+    //    SetUILabelText(transform.Find(path), text);
+    //}
 
-    public static void SetUILabelText(GameObject gameObject, string path, string text)
-    {
-        if (gameObject == null)
-        {
-            return;
-        }
+    //public static void SetUILabelText(GameObject gameObject, string path, string text)
+    //{
+    //    if (gameObject == null)
+    //    {
+    //        return;
+    //    }
 
-        SetUILabelText(gameObject.transform, path, text);
-    }
+    //    SetUILabelText(gameObject.transform, path, text);
+    //}
 
-    public static void SetUISprite(UISprite uiSprite, string name)
-    {
-        if (uiSprite == null)
-        {
-            return;
-        }
+    //public static void SetUISprite(UISprite uiSprite, string name)
+    //{
+    //    if (uiSprite == null)
+    //    {
+    //        return;
+    //    }
 
-        uiSprite.spriteName = name;
-    }
+    //    uiSprite.spriteName = name;
+    //}
 
-    public static void SetUISprite(Transform transform, string name)
-    {
-        if (transform == null)
-        {
-            return;
-        }
+    //public static void SetUISprite(Transform transform, string name)
+    //{
+    //    if (transform == null)
+    //    {
+    //        return;
+    //    }
 
-        SetUISprite(transform.GetComponent<UISprite>(), name);
-    }
+    //    SetUISprite(transform.GetComponent<UISprite>(), name);
+    //}
 
-    public static void SetUISprite(Transform transform, string path, string name)
-    {
-        if (transform == null)
-        {
-            return;
-        }
+    //public static void SetUISprite(Transform transform, string path, string name)
+    //{
+    //    if (transform == null)
+    //    {
+    //        return;
+    //    }
 
-        SetUISprite(transform.Find(path), name);
-    }
+    //    SetUISprite(transform.Find(path), name);
+    //}
 
-    public static void SetUISprite(GameObject gameObject, string path, string name)
-    {
-        if (gameObject == null)
-        {
-            return;
-        }
+    //public static void SetUISprite(GameObject gameObject, string path, string name)
+    //{
+    //    if (gameObject == null)
+    //    {
+    //        return;
+    //    }
 
-        SetUISprite(gameObject.transform, path, name);
-    }
+    //    SetUISprite(gameObject.transform, path, name);
+    //}
 
 
-    public static void SetUIEventListener(GameObject gameObject, string path, UIEventListener.VoidDelegate onClick)
-    {
-        if (gameObject == null)
-        {
-            return;
-        }
+    //public static void SetUIEventListener(GameObject gameObject, string path, UIEventListener.VoidDelegate onClick)
+    //{
+    //    if (gameObject == null)
+    //    {
+    //        return;
+    //    }
 
-        Transform transform = gameObject.transform.Find(path);
-        if (transform == null)
-        {
-            return;
-        }
+    //    Transform transform = gameObject.transform.Find(path);
+    //    if (transform == null)
+    //    {
+    //        return;
+    //    }
 
-        UIEventListener.Get(transform.gameObject).onClick = onClick;
-    }
+    //    UIEventListener.Get(transform.gameObject).onClick = onClick;
+    //}
 
 
     ////////////////////////////Unity
