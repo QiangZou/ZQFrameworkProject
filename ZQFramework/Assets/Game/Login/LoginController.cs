@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class LoginController : BaseController {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void Open()
+    {
+        base.Open();
+
+
+    }
+
+    public void Login(string z,string m)
+    {
+
+
+
+    }
 }

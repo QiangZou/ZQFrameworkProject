@@ -1,19 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class LoginView : BaseView
+public sealed class LoginView : BaseView
 {
+    public InputField z;
+    public InputField m;
 
-    // Use this for initialization
-    void Start()
+    protected override void Start()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
+    public void Button()
+    {
+        string z = this.z.text;
+        string m = this.m.text;
+
+        MVCManager.Me.GetController<LoginController>().Login(z,m);
     }
+
+    
 }

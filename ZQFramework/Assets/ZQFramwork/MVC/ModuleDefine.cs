@@ -5,7 +5,7 @@ using UnityEngine;
 public class ModuleDefine
 {
     public ModuleID moduleID;
-    public BaseModel BaseModel;
+    public BaseModel baseModel;
     public BaseController baseController;
     public BaseView baseView;
 
