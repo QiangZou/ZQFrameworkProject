@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace ZQFramwork
 {
     public class MVCManager
@@ -39,31 +40,30 @@ namespace ZQFramwork
         {
 
         }
-   public T GetModel<T>(ModuleID moduleID)
-    {
-        ModuleDefine moduleDefine = null;
-        if (allModuleDic.TryGetValue(moduleID, out moduleDefine))
+        public T GetModel<T>(ModuleID moduleID)
         {
-            //return allModuleDic[moduleID].baseModel as T;
+            ModuleDefine moduleDefine = null;
+            if (allModuleDic.TryGetValue(moduleID, out moduleDefine))
+            {
+                //return allModuleDic[moduleID].baseModel as T;
+            }
+
+            return default(T);
         }
 
-        return default(T);
-    }
-
-    public T GetController<T>()
-    {
-        for (int i = 0; i < ModuleDefineConfig.allModuleDefine.Length; i++)
+        public T GetController<T>()
         {
-            ModuleDefine moduleDefine = ModuleDefineConfig.allModuleDefine[i];
+            for (int i = 0; i < ModuleDefineConfig.allModuleDefine.Length; i++)
+            {
+                ModuleDefine moduleDefine = ModuleDefineConfig.allModuleDefine[i];
 
-            //if (moduleDefine.baseController.GetType().Equals(T))
-            //{
-            //    return moduleDefine.baseController;
-            //}
+                //if (moduleDefine.baseController.GetType().Equals(T))
+                //{
+                //    return moduleDefine.baseController;
+                //}
+            }
+            return default(T);
         }
-        return default(T);
     }
-}
-   }
 }
 
