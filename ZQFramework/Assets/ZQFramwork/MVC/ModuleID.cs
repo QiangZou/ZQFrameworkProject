@@ -1,8 +1,12 @@
-﻿public enum ModuleID
+﻿namespace ZQFramwork
 {
-    None = 0,
-    Login = 1,
-    Main = 2,
+    public enum ModuleID
+    {
+        None = 0,
+        Login = 1,
+        Main = 2,
 
 
+    }
 }
+

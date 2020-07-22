@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseModel
+namespace ZQFramwork
 {
+    public class BaseModel
+    {
 
 
+    }
 }
