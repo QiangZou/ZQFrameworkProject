@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 
@@ -85,10 +86,15 @@ public class ProjectManagerWindow : EditorWindow
 
             FoldersTool.Folder();//提前初始化 防止线程不能调用unity api
 
-            ThreadTask threadTask = new ThreadTask(() =>
+            ThreadPool.QueueUserWorkItem((go) =>
             {
                 FoldersTool.CheckFolderName(FoldersTool.Folder(), illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
             });
+
+            //ThreadTask threadTask = new ThreadTask(() =>
+            //{
+            //    FoldersTool.CheckFolderName(FoldersTool.Folder(), illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
+            //});
 
             //FoldersTool.CheckFolderName(FoldersTool.Folder, illegalFiles, new List<char>(ProjectManagerConfigManager.Get().checkFileName.legal.ToCharArray()));
 

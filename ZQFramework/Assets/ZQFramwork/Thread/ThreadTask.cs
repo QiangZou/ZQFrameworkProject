@@ -17,6 +17,6 @@ public class ThreadTask
     private void ThreadRun()
     {
         action();
-        Debug.LogError("线程结束");
+        //Debug.LogError("线程结束");
     }
 }
