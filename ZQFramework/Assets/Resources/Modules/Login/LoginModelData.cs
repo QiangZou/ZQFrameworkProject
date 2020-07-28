@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ZQFramwork;
-public class MainView : BaseView
-{
 
+public class LoginModelData : BaseModelData
+{
+    public string z;
+    public string m;
 
 }

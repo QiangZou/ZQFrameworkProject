@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZQFramwork;
 
-public class GameStart : MonoBehaviour
+public class MainViewData : BaseViewData
 {
 
-    public void Start()
-    {
-        MVCManager.Me.Init();
-
-    }
 }

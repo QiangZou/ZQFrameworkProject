@@ -16,7 +16,7 @@ public class BaseBehaviour : MonoBehaviour
     }
     protected virtual void Update()
     {
-        Debug.Log(transform.name + " Update");
+        //Debug.Log(transform.name + " Update");
     }
     protected virtual void OnDisable()
     {

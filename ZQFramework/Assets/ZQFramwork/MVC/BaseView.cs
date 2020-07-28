@@ -7,6 +7,9 @@ namespace ZQFramwork
     {
         public BaseViewData baseViewData;
 
+        public virtual void Bind()
+        {
 
+        }
     }
 }

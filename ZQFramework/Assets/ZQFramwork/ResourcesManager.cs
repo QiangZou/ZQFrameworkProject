@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace ZQFramwork
 {
-    public class ResourcesManager : MonoSingleton<ResourcesManager> 
+    public class ResourcesManager : MonoSingleton<ResourcesManager>
     {
 
         /// <summary>
@@ -12,11 +12,11 @@ namespace ZQFramwork
         /// </summary>
         /// <param name="assetPaths">路径格式"Assets/Resources/a1.prefab"</param>
         /// <returns></returns>
-        public Object Load(string assetPaths)
+        public static Object Load(string assetPaths)
         {
             //float startTime = Time.realtimeSinceStartup;
 
-            Object prefab = null;
+            Object prefab = Resources.Load(assetPaths);
 
             //prefab = UnityEditor.AssetDatabase.LoadMainAssetAtPath(assetPaths);
 

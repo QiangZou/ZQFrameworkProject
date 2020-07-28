@@ -5,14 +5,13 @@ using ZQFramwork;
 
 public class LoginController : BaseController
 {
+    public LoginController(BaseModel baseModel) : base(baseModel)
+    {
+
+    }
 
     public override void Open()
     {
         base.Open();
-    }
-
-    public void Login(string z, string m)
-    {
-
     }
 }

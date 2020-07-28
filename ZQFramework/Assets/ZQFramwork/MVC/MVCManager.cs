@@ -40,6 +40,55 @@ namespace ZQFramwork
         {
 
         }
+
+       
+
+        public void OpenModule(ModuleID moduleID)
+        {
+            InitModule(moduleID);
+            Bind(moduleID);
+
+            ModuleDefine moduleDefine = allModuleDic[moduleID];
+            moduleDefine.baseController.Open();
+        }
+
+        public void InitModule(ModuleID moduleID)
+        {
+            ModuleDefine moduleDefine = allModuleDic[moduleID];
+
+            if (moduleDefine.isInit)
+            {
+                return;
+            }
+
+            //ÊµÀý»¯Ä£¿é
+            moduleDefine.baseViewData = Activator.CreateInstance(moduleDefine.baseViewDataType) as BaseViewData;
+            moduleDefine.baseModelData = Activator.CreateInstance(moduleDefine.baseModelDataType) as BaseModelData;
+            moduleDefine.baseModel = Activator.CreateInstance(moduleDefine.baseModelType, moduleDefine.baseViewData, moduleDefine.baseModelData) as BaseModel;
+            moduleDefine.baseController = Activator.CreateInstance(moduleDefine.baseControllerType, moduleDefine.baseModel) as BaseController;
+
+            moduleDefine.isInit = true;
+        }
+
+        public void Bind(ModuleID moduleID)
+        {
+            ModuleDefine moduleDefine = allModuleDic[moduleID];
+
+            moduleDefine.baseView = WindowManager.Get().OpenWindow(string.Format("Modules/{0}/{0}", moduleID.ToString(), moduleID.ToString()), moduleDefine.baseViewType) as BaseView;
+
+            moduleDefine.baseView.baseViewData = moduleDefine.baseViewData;
+
+            moduleDefine.baseModel.Bind();
+            moduleDefine.baseView.Bind();
+        }
+
+        public BaseController GetController(ModuleID moduleId)
+        {
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+
+            return moduleDefine.baseController;
+        }
+
         public T GetModel<T>(ModuleID moduleID)
         {
             ModuleDefine moduleDefine = null;
@@ -51,19 +100,7 @@ namespace ZQFramwork
             return default(T);
         }
 
-        public T GetController<T>()
-        {
-            for (int i = 0; i < ModuleDefineConfig.allModuleDefine.Length; i++)
-            {
-                ModuleDefine moduleDefine = ModuleDefineConfig.allModuleDefine[i];
 
-                //if (moduleDefine.baseController.GetType().Equals(T))
-                //{
-                //    return moduleDefine.baseController;
-                //}
-            }
-            return default(T);
-        }
     }
 }
 

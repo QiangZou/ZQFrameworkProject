@@ -6,16 +6,33 @@ namespace ZQFramwork
 {
     public class BaseModel
     {
+        protected BaseModelData baseModelData;
+        protected BaseViewData baseViewData;
+
+        public BaseModel(BaseViewData baseViewData, BaseModelData baseModelData)
+        {
+            this.baseViewData = baseViewData;
+            this.baseModelData = baseModelData;
+        }
+
+        public virtual void Bind()
+        {
+
+        }
+
+
         /// <summary>
         ///注册消息
         /// </summary>
-        protected void RegisterMessage()
-        { }
+        protected virtual void RegisterMessage()
+        {
+
+        }
 
         /// <summary>
         /// 模块打开
         /// </summary>
-        protected void Open()
+        public virtual void Open()
         {
 
         }
@@ -23,10 +40,9 @@ namespace ZQFramwork
         /// <summary>
         /// 模块关闭
         /// </summary>
-        protected void Close()
+        protected virtual void Close()
         {
 
         }
-
     }
 }
