@@ -5,6 +5,8 @@ namespace ZQFramwork
 {
     public class BaseView : BaseBehaviour
     {
+        public ViewType viewType;
+
         public BaseViewData baseViewData;
 
         public virtual void Bind()

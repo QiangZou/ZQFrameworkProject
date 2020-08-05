@@ -37,5 +37,7 @@ public class LoginModel : BaseModel
         LoginModelData.m = m;
 
         Debug.Log(string.Format("登入成功 账号 {0} 密码 {1}", z, m));
+
+        MVCManager.Me.OpenModule(ModuleID.Main);
     }
 }

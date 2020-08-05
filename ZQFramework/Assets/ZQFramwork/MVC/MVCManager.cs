@@ -41,20 +41,9 @@ namespace ZQFramwork
 
         }
 
-       
-
-        public void OpenModule(ModuleID moduleID)
+        public void InitModule(ModuleID moduleId)
         {
-            InitModule(moduleID);
-            Bind(moduleID);
-
-            ModuleDefine moduleDefine = allModuleDic[moduleID];
-            moduleDefine.baseController.Open();
-        }
-
-        public void InitModule(ModuleID moduleID)
-        {
-            ModuleDefine moduleDefine = allModuleDic[moduleID];
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
 
             if (moduleDefine.isInit)
             {
@@ -70,11 +59,22 @@ namespace ZQFramwork
             moduleDefine.isInit = true;
         }
 
-        public void Bind(ModuleID moduleID)
+        public void OpenModule(ModuleID moduleId)
         {
-            ModuleDefine moduleDefine = allModuleDic[moduleID];
+            InitModule(moduleId);
 
-            moduleDefine.baseView = WindowManager.Get().OpenWindow(string.Format("Modules/{0}/{0}", moduleID.ToString(), moduleID.ToString()), moduleDefine.baseViewType) as BaseView;
+            Bind(moduleId);
+
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+            moduleDefine.baseController.Open();
+        }
+
+
+        public void Bind(ModuleID moduleId)
+        {
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+
+            moduleDefine.baseView = WindowManager.Get().OpenWindow<BaseView>(string.Format("Modules/{0}/{0}", moduleId.ToString(), moduleId.ToString()));
 
             moduleDefine.baseView.baseViewData = moduleDefine.baseViewData;
 
@@ -84,20 +84,20 @@ namespace ZQFramwork
 
         public BaseController GetController(ModuleID moduleId)
         {
+            InitModule(moduleId);
+
             ModuleDefine moduleDefine = allModuleDic[moduleId];
 
             return moduleDefine.baseController;
         }
 
-        public T GetModel<T>(ModuleID moduleID)
+        public BaseModelData GetModelData(ModuleID moduleId)
         {
-            ModuleDefine moduleDefine = null;
-            if (allModuleDic.TryGetValue(moduleID, out moduleDefine))
-            {
-                //return allModuleDic[moduleID].baseModel as T;
-            }
+            InitModule(moduleId);
 
-            return default(T);
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+
+            return moduleDefine.baseModelData;
         }
 
 
