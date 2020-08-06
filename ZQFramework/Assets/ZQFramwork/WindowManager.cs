@@ -81,6 +81,8 @@ namespace ZQFramwork
                 GameObject go = Instantiate(prefab as GameObject);
 
                 me = go.GetComponent<WindowManager>();
+
+                DontDestroyOnLoad(go);
             }
 
             return me;
