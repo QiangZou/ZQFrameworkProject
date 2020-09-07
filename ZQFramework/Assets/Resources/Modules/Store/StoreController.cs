@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZQFramwork;
 
-public class GameStart : MonoBehaviour
+public class StoreController : BaseController
 {
-
-    public void Start()
+    public StoreController(BaseModel baseModel) : base(baseModel)
     {
-        MVCManager.Me.Init();
 
     }
+
 }

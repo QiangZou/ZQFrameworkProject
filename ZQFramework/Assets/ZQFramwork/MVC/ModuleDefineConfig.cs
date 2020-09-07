@@ -8,20 +8,24 @@ namespace ZQFramwork
     {
         public static ModuleDefine[] allModuleDefine = new ModuleDefine[]
         {
-            //new ModuleDefine()
-            //{
-            //    moduleID = ModuleID.Login,
-            //    BaseModel = new LoginModel(),
-            //    baseController = new LoginController(),
-            //    baseView = new LoginView(),
-            //},
-            //new ModuleDefine()
-            //{
-            //    moduleID = ModuleID.Main,
-            //    BaseModel = new MainModel(),
-            //    baseController = new MainController(),
-            //    baseView = new MainView(),
-            //}
+            new ModuleDefine()
+            {
+                moduleID = ModuleID.Login,
+                baseViewDataType = typeof(LoginViewData),
+                baseModelDataType = typeof(LoginModelData),
+                baseModelType = typeof(LoginModel),
+                baseControllerType = typeof(LoginController),
+                baseViewType = typeof(LoginView),
+            },
+            new ModuleDefine()
+            {
+                moduleID = ModuleID.Main,
+                baseViewDataType = typeof(MainViewData),
+                baseModelDataType = typeof(MainModelData),
+                baseModelType = typeof(MainModel),
+                baseControllerType = typeof(MainController),
+                baseViewType = typeof(MainView),
+            },
         };
 
     }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ZQFramwork;
-public class MainModel : BaseModel {
 
-	
+public class MainViewData : BaseViewData
+{
+
 }

@@ -40,30 +40,67 @@ namespace ZQFramwork
         {
 
         }
-        public T GetModel<T>(ModuleID moduleID)
+
+        public void InitModule(ModuleID moduleId)
         {
-            ModuleDefine moduleDefine = null;
-            if (allModuleDic.TryGetValue(moduleID, out moduleDefine))
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+
+            if (moduleDefine.isInit)
             {
-                //return allModuleDic[moduleID].baseModel as T;
+                return;
             }
 
-            return default(T);
+            //ÊµÀý»¯Ä£¿é
+            moduleDefine.baseViewData = Activator.CreateInstance(moduleDefine.baseViewDataType) as BaseViewData;
+            moduleDefine.baseModelData = Activator.CreateInstance(moduleDefine.baseModelDataType) as BaseModelData;
+            moduleDefine.baseModel = Activator.CreateInstance(moduleDefine.baseModelType, moduleDefine.baseViewData, moduleDefine.baseModelData) as BaseModel;
+            moduleDefine.baseController = Activator.CreateInstance(moduleDefine.baseControllerType, moduleDefine.baseModel) as BaseController;
+
+            moduleDefine.isInit = true;
         }
 
-        public T GetController<T>()
+        public void OpenModule(ModuleID moduleId)
         {
-            for (int i = 0; i < ModuleDefineConfig.allModuleDefine.Length; i++)
-            {
-                ModuleDefine moduleDefine = ModuleDefineConfig.allModuleDefine[i];
+            InitModule(moduleId);
 
-                //if (moduleDefine.baseController.GetType().Equals(T))
-                //{
-                //    return moduleDefine.baseController;
-                //}
-            }
-            return default(T);
+            Bind(moduleId);
+
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+            moduleDefine.baseController.Open();
         }
+
+
+        public void Bind(ModuleID moduleId)
+        {
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+
+            moduleDefine.baseView = WindowManager.Get().OpenWindow<BaseView>(string.Format("Modules/{0}/{0}", moduleId.ToString(), moduleId.ToString()));
+
+            moduleDefine.baseView.baseViewData = moduleDefine.baseViewData;
+
+            moduleDefine.baseModel.Bind();
+            moduleDefine.baseView.Bind();
+        }
+
+        public BaseController GetController(ModuleID moduleId)
+        {
+            InitModule(moduleId);
+
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+
+            return moduleDefine.baseController;
+        }
+
+        public BaseModelData GetModelData(ModuleID moduleId)
+        {
+            InitModule(moduleId);
+
+            ModuleDefine moduleDefine = allModuleDic[moduleId];
+
+            return moduleDefine.baseModelData;
+        }
+
+
     }
 }
 

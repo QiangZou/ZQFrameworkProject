@@ -175,6 +175,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224543074497175002}
+  - component: {fileID: 114855803662088078}
   m_Layer: 5
   m_Name: Login
   m_TagString: Untagged
@@ -478,7 +479,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -499,7 +500,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114820032583500084}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114855803662088078}
+        m_MethodName: ButtonLogin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114741159582595004
@@ -622,6 +634,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114855803662088078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998696019678738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6701af8e25e5d2a43a7f518f45bbaff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  z: {fileID: 114462734190563114}
+  m: {fileID: 114675408447362512}
 --- !u!222 &222006732043818520
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -30,4 +30,19 @@ public static class ExtensionsGameObject
         transform.gameObject.SetActive(active);
     }
 
+    public static T GetComponent<T>(this GameObject self) where T : Component
+    {
+        T component = self.GetComponent<T>();
+
+        if (component == null)
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning(string.Format("{0} 对象上 {1} 组建为空", self.name, typeof(T).ToString()));
+#endif
+            component = self.AddComponent<T>();
+        }
+
+        return component;
+    }
+
 }

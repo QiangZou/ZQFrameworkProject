@@ -3,254 +3,311 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+//主界面
+//全屏窗口 登入窗口 主窗口  加载窗口 
+//大屏窗口 背包界面 角色界面 商城界面 宠物界面-- 半透明背景
+//居中大弹窗 宠物详情  -- 半透明背景 有关闭按钮
+//固定位置弹窗 对话框 物品使用框 --透明背景 点击其他区域关闭
+//不固定位置弹窗 装备详情--透明背景 点击其他区域关闭
+//飘字-- 最顶层  没背景
+//
+
 namespace ZQFramwork
 {
-    public class WindowManager : MonoSingleton<WindowManager>
+    public enum ViewType
     {
-        Camera currentCamera;
-
-        private Dictionary<string, GameObject> allWindow;
-
-
-
-        public override void OnSingletonInit()
-        {
-            base.OnSingletonInit();
-
-            CreateRoot();
-
-            allWindow = new Dictionary<string, GameObject>();
-        }
-
-
-
-
-
         /// <summary>
-        /// 创建根目录.
+        /// 一级
         /// </summary>
-        public void CreateRoot()
-        {
+        OneLevel,
+        /// <summary>
+        /// 二级
+        /// </summary>
+        SecondLevel,
+        /// <summary>
+        /// 三级
+        /// </summary>
+        ThreeLevel,
+        /// <summary>
+        /// 对话框
+        /// </summary>
+        Dialog,
+        /// <summary>
+        /// 悬浮框
+        /// </summary>
+        Popup,
+        /// <summary>
+        /// 提示
+        /// </summary>
+        Prompt
+    }
 
-            UIRoot uiRoot = gameObject.AddComponent<UIRoot>();
-
-            uiRoot.scalingStyle = global::UIRoot.Scaling.Constrained;
-            uiRoot.manualWidth = 750;
-            uiRoot.manualHeight = 1334;
-
-            //需要计算屏幕分辨率 和 设计分辨率 的宽高比 来决定使用宽度适配还是高度适配
-            float tmpScreenAspectRatio = (Screen.width * 1.0f) / Screen.height;
-            float tmpDesignAspectRatio = 750 / 1334;
-            if (tmpScreenAspectRatio < tmpDesignAspectRatio)
-            {
-                uiRoot.fitWidth = true;
-                uiRoot.fitHeight = false;
-            }
-            else
-            {
-                uiRoot.fitWidth = false;
-                uiRoot.fitHeight = true;
-            }
-
-
-            //UIPanel uiPanel = gameObject.AddComponent<UIPanel>();
-
-
-
-
-            GameObject camera = new GameObject("Camera");
-            camera.transform.SetParent(transform);
-
-            currentCamera = camera.AddComponent<Camera>();
-
-            //清除标识;
-            currentCamera.clearFlags = CameraClearFlags.SolidColor;
-
-            //设置为正交相机
-            currentCamera.orthographic = true;
-            currentCamera.orthographicSize = 1.0f;
-
-            //相机到开始和结束渲染的距离;
-            currentCamera.nearClipPlane = -50;
-            currentCamera.farClipPlane = 50;
-
-            //设置显示层;
-            //currentCamera.cullingMask = OnlyIncluding(LayerMask.NameToLayer(mLayer));
-
-            //UICamera uiCamera = camera.AddComponent<UICamera>();
-        }
+    public interface IWindowManager
+    {
+        void OpenView(string path);
+        void OpenView(string path, ViewType viewType);
+    }
 
 
-        public static int OnlyIncluding(params int[] layers)
-        {
-            int mask = 0;
-            for (int i = 0; i < layers.Length; i++)
-            {
-                mask |= 1 << layers[i];
-            }
-            return mask;
-        }
+    public class WindowManager : BaseBehaviour
+    {
+        private static WindowManager me;
+
+        public Camera currentCamera;
+
+        public GameObject root;
+
+        public Transform oneLevel;
+        public Transform secondLevel;
+        public Transform threeLevel;
+        public Transform dialog;
+        public Transform popup;
+        public Transform prompt;
 
         /// <summary>
-        /// 是否打开窗口
+        /// 缓存数量
+        /// </summary>
+        public int cacheNumber = 1;
+
+        private Dictionary<ViewType, Dictionary<string, GameObject>> allView = new Dictionary<ViewType, Dictionary<string, GameObject>>();
+
+
+        public static WindowManager Get()
+        {
+            if (me == null)
+            {
+                UnityEngine.Object prefab = ResourcesManager.Load("WinodwManager");
+
+                GameObject go = Instantiate(prefab as GameObject);
+
+                me = go.GetComponent<WindowManager>();
+
+                DontDestroyOnLoad(go);
+            }
+
+            return me;
+        }
+
+        public GameObject OpenWindow(string path)
+        {
+            //待优化
+            foreach (var items in allView)
+            {
+                foreach (var item in items.Value)
+                {
+                    if (item.Key == path)
+                    {
+                        ExecuteRule(items.Key, path);
+
+                        return item.Value;
+                    }
+                }
+            }
+
+            UnityEngine.Object prefab = ResourcesManager.Load(path);
+
+            GameObject window = Instantiate(prefab as GameObject, root.transform);
+
+            BaseView baseView = window.GetComponent<BaseView>();
+            ViewType viewType = baseView.viewType;
+
+            //解耦
+            switch (viewType)
+            {
+                case ViewType.OneLevel:
+                    window.transform.parent = oneLevel;
+                    break;
+                case ViewType.SecondLevel:
+                    window.transform.parent = secondLevel;
+                    window.transform.SetSiblingIndex(secondLevel.childCount - 1);
+                    break;
+                case ViewType.ThreeLevel:
+                    window.transform.parent = threeLevel;
+                    window.transform.SetSiblingIndex(threeLevel.childCount - 1);
+                    break;
+                case ViewType.Dialog:
+                    window.transform.parent = dialog;
+                    break;
+                case ViewType.Popup:
+                    window.transform.parent = popup;
+                    break;
+                case ViewType.Prompt:
+                    window.transform.parent = prompt;
+                    break;
+            }
+
+            Dictionary<string, GameObject> keyValues = null;
+
+            if (allView.TryGetValue(viewType, out keyValues) == false)
+            {
+                keyValues = new Dictionary<string, GameObject>();
+            }
+
+            keyValues[path] = window;
+
+            allView[viewType] = keyValues;
+
+            ExecuteRule(viewType, path);
+
+            return window;
+        }
+
+        public T OpenWindow<T>(string path)
+        {
+            GameObject go = OpenWindow(path);
+
+            T window = go.GetComponent<T>();
+
+            return window;
+        }
+
+        public Component OpenWindow(string path, Type type)
+        {
+            GameObject go = OpenWindow(path);
+
+            Component window = go.GetComponent(type);
+
+            return window;
+        }
+
+
+        /// <summary>
+        /// 获取窗口
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public bool IsOpenWindow(string path)
+        private GameObject GetNewView(string path)
         {
-            if (allWindow.ContainsKey(path))
-            {
-                return true;
-            }
+            UnityEngine.Object prefab = ResourcesManager.Load(path);
 
-            return false;
+            GameObject window = Instantiate(prefab as GameObject, root.transform);
+
+            return window;
         }
 
         /// <summary>
-        /// 获取窗口名字
+        /// 执行显示规制
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public string GetWindowName(string path)
+        /// <param name="viewType"></param>
+        /// <param name="key"></param>
+        private void ExecuteRule(ViewType viewType, string key)
         {
-            string name = path.Replace(".prefab", "");
+            SetViewSiblingIndex(viewType, key);
 
-            int index = name.LastIndexOf("/");
-
-            if (index > 0)
+            switch (viewType)
             {
-                name = name.Substring(index + 1);
+                case ViewType.OneLevel:
+                    {
+                        Hide(ViewType.OneLevel, key);
+                        Hide(ViewType.SecondLevel);
+                        Hide(ViewType.ThreeLevel);
+                        Hide(ViewType.Dialog);
+                        Hide(ViewType.Popup);
+                        Hide(ViewType.Prompt);
+                    }
+                    break;
+                case ViewType.SecondLevel:
+                    {
+                        Hide(ViewType.SecondLevel, key);
+                        Hide(ViewType.ThreeLevel);
+                        Hide(ViewType.Dialog);
+                        Hide(ViewType.Popup);
+                    }
+                    break;
+                case ViewType.ThreeLevel:
+                    {
+                        Hide(ViewType.ThreeLevel, key);
+                        Hide(ViewType.Dialog);
+                        Hide(ViewType.Popup);
+                    }
+                    break;
+                case ViewType.Dialog:
+                    {
+                        Hide(ViewType.Dialog, key);
+                        Hide(ViewType.Popup);
+                    }
+                    break;
+                case ViewType.Popup:
+                    {
+                        Hide(ViewType.Dialog);
+                        Hide(ViewType.Popup, key);
+                    }
+                    break;
+                case ViewType.Prompt:
+                    {
+                        Hide(ViewType.Prompt, key);
+                    }
+                    break;
             }
-
-            return name;
         }
 
         /// <summary>
-        /// 打开窗口
+        /// 设置界面位置
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="completed"></param>
-        public void OpenWindow(string path, Action<GameObject> completed = null)
+        /// <param name="viewType"></param>
+        /// <param name="key"></param>
+        private void SetViewSiblingIndex(ViewType viewType, string key)
         {
-            //如果已经打开过了窗口;
-            if (IsOpenWindow(path))
+            Dictionary<string, GameObject> keyValuePairs = null;
+            if (allView.TryGetValue(viewType, out keyValuePairs) == false)
             {
                 return;
             }
 
-            LoadManager.Instance.Load(path, (obj) =>
-             {
+            GameObject view = keyValuePairs[key];
 
-                 GameObject prefab = obj as GameObject;
-
-                 if (prefab == null)
-                 {
-                     return;
-                 }
-
-                 string name = GetWindowName(path);
-
-                 Transform window = prefab.transform.Find(name);
-
-                 if (window == null)
-                 {
-                     return;
-                 }
-
-                 GameObject ui = GameObject.Instantiate(window.gameObject) as GameObject;
-
-                 ui.transform.parent = transform;
-
-                 ui.transform.name = name;
-
-                 ui.transform.localScale = Vector3.one;
-
-                 allWindow.Add(path, ui);
-
-                 SetPanelDepth();
-
-                 if (completed != null) completed(ui);
-
-             });
-        }
-
-
-        /// <summary>
-        /// 关闭窗口
-        /// </summary>
-        /// <param name="path"></param>
-        public void CloseWindow(string path)
-        {
-            GameObject window;
-
-            if (allWindow.TryGetValue(path, out window))
+            switch (viewType)
             {
-                Destroy(window);
-
-                allWindow.Remove(path);
+                case ViewType.OneLevel:
+                    view.transform.SetSiblingIndex(oneLevel.childCount - 1);
+                    break;
+                case ViewType.SecondLevel:
+                    view.transform.SetSiblingIndex(secondLevel.childCount - 1);
+                    break;
+                case ViewType.ThreeLevel:
+                    view.transform.SetSiblingIndex(threeLevel.childCount - 1);
+                    break;
             }
         }
 
-        /// <summary>
-        /// 设置UI层级.
-        /// </summary>
-        void SetLayer()
+        private void Destroy(ViewType viewType, string key = "")
         {
-            //NGUITools.SetLayer(this.gameObject, LayerMask.NameToLayer(mLayer));
-        }
-
-        /// <summary>
-        /// 设置Panel深度.
-        /// </summary>
-        void SetPanelDepth()
-        {
-            //获取所有的Panel
-            UIPanel[] uiPanels = transform.GetComponentsInChildren<UIPanel>(true);
-
-            //遍历Panel，Depth 递增
-            for (int i = 0; i < uiPanels.Length; i++)
+            Dictionary<string, GameObject> keyValuePairs = null;
+            if (allView.TryGetValue(viewType, out keyValuePairs) == false)
             {
-                uiPanels[i].depth = 1 + i * 50;
+                return;
             }
 
-        }
 
-
-
-
-
-
-
-        /// <summary>
-        /// 获取NGUI坐标 根据屏幕坐标;
-        /// </summary>
-        /// <param name="varVec3"></param>
-        /// <returns></returns>
-        public Vector3 GetPosition(Vector3 varVec3)
-        {
-            varVec3.z = 0;
-
-            varVec3 = currentCamera.WorldToScreenPoint(varVec3);
-
-            varVec3.x -= (Screen.width / 2.0f);
-            varVec3.y -= (Screen.height / 2.0f);
-
-            return varVec3;
         }
 
         /// <summary>
-        /// 世界坐标转屏幕坐标.
+        /// 隐藏
         /// </summary>
-        /// <param name="varVec3">transform的世界坐标为 transform.position</param>
-        /// <returns></returns>
-        public Vector3 WorldToScreenPoint(Vector3 varVec3)
+        /// <param name="viewType"></param>
+        /// <param name="key"></param>
+        private void Hide(ViewType viewType, string key = "")
         {
-            varVec3.z = 0;
+            Dictionary<string, GameObject> keyValuePairs = null;
+            if (allView.TryGetValue(viewType, out keyValuePairs) == false)
+            {
+                return;
+            }
 
-            varVec3 = currentCamera.WorldToScreenPoint(varVec3);
-
-            return varVec3;
+            foreach (var item in keyValuePairs)
+            {
+                if (item.Key != key)
+                {
+                    item.Value.SetActive(false);
+                }
+                else
+                {
+                    item.Value.SetActive(true);
+                }
+            }
         }
+
+
 
     }
 }
