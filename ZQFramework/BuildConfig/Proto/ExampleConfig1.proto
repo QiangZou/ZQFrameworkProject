@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+message ExampleConfig1
+{
+
+    int32 id = 1;//字段备注0
+    
+    string name = 2;//字段备注1
+    
+    float floatType = 3;//字段备注2
+    
+    bool boolType = 4;//字段备注3
+    
+    repeated uint32 uintType = 5;//字段备注4
+    
+    repeated int64 int64Type = 6;//字段备注5
+    
+    uint64 uint64Type = 7;//字段备注6
+    
+    double doubleType = 8;//字段备注7
+    
+}
