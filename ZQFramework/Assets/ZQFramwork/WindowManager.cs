@@ -49,7 +49,7 @@ namespace ZQFramwork
     }
 
 
-    public class WindowManager : BaseBehaviour
+    public class WindowManager : ZQBaseBehaviour
     {
         private static WindowManager me;
 
