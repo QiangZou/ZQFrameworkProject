@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,7 +50,6 @@ namespace ZQFramwork
                 return;
             }
 
-            //ÊµÀý»¯Ä£¿é
             moduleDefine.baseViewData = Activator.CreateInstance(moduleDefine.baseViewDataType) as BaseViewData;
             moduleDefine.baseModelData = Activator.CreateInstance(moduleDefine.baseModelDataType) as BaseModelData;
             moduleDefine.baseModel = Activator.CreateInstance(moduleDefine.baseModelType, moduleDefine.baseViewData, moduleDefine.baseModelData) as BaseModel;

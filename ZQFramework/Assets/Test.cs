@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
-
+using ZQFramwork;
 
 public class Test : MonoBehaviour
 {
@@ -23,6 +23,8 @@ public class Test : MonoBehaviour
         //thr2.Start();
         //thr3.Start();
 
+
+        Debug.Log(TimeUtil.GetChineseData(637373687463016454));
 
     }
 
