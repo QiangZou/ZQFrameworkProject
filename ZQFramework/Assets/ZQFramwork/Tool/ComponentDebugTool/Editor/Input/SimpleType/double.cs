@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public static partial class InputTool
     {

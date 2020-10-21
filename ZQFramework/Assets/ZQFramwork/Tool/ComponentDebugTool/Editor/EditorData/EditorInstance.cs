@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public class EditorInstance
     {

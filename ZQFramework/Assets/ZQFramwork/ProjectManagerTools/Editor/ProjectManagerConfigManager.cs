@@ -3,87 +3,91 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public static class ProjectManagerConfigManager
+namespace ZQFramwork
 {
-    private static ProjectManagerConfig config;
-    private static string SaveKey { get { return "ProjectManagerTools" + Application.dataPath; } }
-
-    public static ProjectManagerConfig Get()
+    public static class ProjectManagerConfigManager
     {
-        if (config == null)
+        private static ProjectManagerConfig config;
+        private static string SaveKey { get { return "ProjectManagerTools" + Application.dataPath; } }
+
+        public static ProjectManagerConfig Get()
         {
-            string path = GetAssetPath();
-            config = AssetDatabase.LoadAssetAtPath<ProjectManagerConfig>(path);
-        }
-        if (config == null)
-        {
-            string path = GetNewAssetPath();//因为路径变动导致错误 重新获取新路径
-            config = AssetDatabase.LoadAssetAtPath<ProjectManagerConfig>(path);
-        }
-
-        return config;
-    }
-
-    public static void Save()
-    {
-        EditorUtility.SetDirty(config);//标记目标物体已改变
-        AssetDatabase.SaveAssets();
-    }
-
-    static string GetAssetPath()
-    {
-        string path = EditorPrefs.GetString(SaveKey, "");
-
-        if (string.IsNullOrEmpty(path))
-        {
-            path = GetNewAssetPath();
-        }
-        return path;
-    }
-
-
-    static string GetNewAssetPath()
-    {
-        string path = string.Empty;
-
-        string[] allAssetPaths = AssetDatabase.GetAllAssetPaths();
-
-        foreach (var item in allAssetPaths)
-        {
-            if (item.Contains("ProjectManagerTools/ProjectManagerConfig.asset"))
+            if (config == null)
             {
-                path = item;
-
-                EditorPrefs.SetString(SaveKey, path);
-
-                return path;
+                string path = GetAssetPath();
+                config = AssetDatabase.LoadAssetAtPath<ProjectManagerConfig>(path);
             }
-        }
-        return path;
-    }
-
-
-    private static string GetAssetPath(string name)
-    {
-        string data = EditorPrefs.GetString(SaveKey, "");
-
-        if (string.IsNullOrEmpty(data))
-        {
-            string[] allAssets = AssetDatabase.GetAllAssetPaths();
-
-            foreach (string s in allAssets)
+            if (config == null)
             {
-                if (s.Contains("AdapterTool/Asset"))
+                string path = GetNewAssetPath();//因为路径变动导致错误 重新获取新路径
+                config = AssetDatabase.LoadAssetAtPath<ProjectManagerConfig>(path);
+            }
+
+            return config;
+        }
+
+        public static void Save()
+        {
+            EditorUtility.SetDirty(config);//标记目标物体已改变
+            AssetDatabase.SaveAssets();
+        }
+
+        static string GetAssetPath()
+        {
+            string path = EditorPrefs.GetString(SaveKey, "");
+
+            if (string.IsNullOrEmpty(path))
+            {
+                path = GetNewAssetPath();
+            }
+            return path;
+        }
+
+
+        static string GetNewAssetPath()
+        {
+            string path = string.Empty;
+
+            string[] allAssetPaths = AssetDatabase.GetAllAssetPaths();
+
+            foreach (var item in allAssetPaths)
+            {
+                if (item.Contains("ProjectManagerTools/ProjectManagerConfig.asset"))
                 {
-                    data = s.Substring(0, s.LastIndexOf('/') + 1);
+                    path = item;
 
-                    EditorPrefs.SetString(SaveKey, data);
+                    EditorPrefs.SetString(SaveKey, path);
 
-                    break;
+                    return path;
                 }
             }
+            return path;
         }
 
-        return data + name;
+
+        private static string GetAssetPath(string name)
+        {
+            string data = EditorPrefs.GetString(SaveKey, "");
+
+            if (string.IsNullOrEmpty(data))
+            {
+                string[] allAssets = AssetDatabase.GetAllAssetPaths();
+
+                foreach (string s in allAssets)
+                {
+                    if (s.Contains("AdapterTool/Asset"))
+                    {
+                        data = s.Substring(0, s.LastIndexOf('/') + 1);
+
+                        EditorPrefs.SetString(SaveKey, data);
+
+                        break;
+                    }
+                }
+            }
+
+            return data + name;
+        }
     }
+
 }

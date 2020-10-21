@@ -1,4 +1,4 @@
-﻿namespace ZQ.AdapterTool
+﻿namespace ZQFramwork
 {
     public enum ScreenOrientation
     {

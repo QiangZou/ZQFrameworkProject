@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public enum 自定义枚举
     {
@@ -16,7 +16,7 @@ namespace Zq.Tool
     }
 
     [Serializable]
-    public class Data
+    public class ExampleData
     {
         public int int类型;
         public string string类型;
@@ -32,7 +32,7 @@ namespace Zq.Tool
     {
         public int int类型;
         public string string类型;
-        public Data data自定义类型;
+        public ExampleData data自定义类型;
     }
 
     public class Example : MonoBehaviour
@@ -61,19 +61,19 @@ namespace Zq.Tool
         Vector3 Vector3类型;
         Vector4 Vector4类型;
 
-        public Data Data自定义类型;
+        public ExampleData Data自定义类型;
         Data1 Data1镶嵌自定义类型;
 
 
         public int[] int数组类型;
         string[] string数组类型;
-        Data[] Data自定义数组类型;
+        ExampleData[] Data自定义数组类型;
 
         public List<int> List_int类型;
         List<string> List_string类型;
-        List<Data> List_Data自定义列表类型;
+        List<ExampleData> List_Data自定义列表类型;
 
-        Dictionary<Data, Data> Dictionary类型;
+        Dictionary<ExampleData, ExampleData> Dictionary类型;
 
 
         public void public无参数函数()
@@ -91,7 +91,7 @@ namespace Zq.Tool
             Debug.LogError("调用 有参数函数() 参数类型 : int类型 值 : " + int类型.ToString());
         }
 
-        void 自定义参数类型函数(Data Data自定义类型)
+        void 自定义参数类型函数(ExampleData Data自定义类型)
         {
             Debug.LogError("调用 自定义参数类型函数() 参数类型 : Data自定义类型 值 : " + Data自定义类型.ToString());
         }

@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 
-public static class PathTool
+namespace ZQFramwork
 {
-    public static string assetBundleSavePath
+    public static class PathTool
     {
-        get { return Application.dataPath + "/../AssetBundles"; }
+        public static string assetBundleSavePath
+        {
+            get { return Application.dataPath + "/../AssetBundles"; }
+        }
     }
+
 }

@@ -1,72 +1,76 @@
-﻿public class ReferenceString
-{
-    public string value;
-}
-
-public class ReferenceSbyte
-{
-    public sbyte value;
-}
-
-public class ReferenceShort
-{
-    public short value;
-}
-
-public class ReferenceInt
-{
-    public int value;
-}
-
-public class ReferenceLong
-{
-    public long value;
-}
-
-public class ReferenceByte
-{
-    public byte value;
-}
-
-public class ReferenceUshort
-{
-    public ushort value;
-}
-
-public class ReferenceUint
-{
-    public uint value;
-}
+﻿
 namespace ZQFramwork
 {
-    public class ReferenceUlong
+    public class ReferenceString
     {
-        public ulong value;
+        public string value;
     }
 
-    public class ReferenceFloat
+    public class ReferenceSbyte
     {
-        public float value;
+        public sbyte value;
     }
 
-    public class ReferenceDouble
+    public class ReferenceShort
     {
-        public double value;
+        public short value;
     }
 
-    public class ReferenceBool
+    public class ReferenceInt
     {
-        public bool value;
+        public int value;
     }
 
-    public class ReferenceChar
+    public class ReferenceLong
     {
-        public char value;
+        public long value;
     }
 
-    public class ReferenceDecimal
+    public class ReferenceByte
     {
-        public decimal value;
+        public byte value;
     }
+
+    public class ReferenceUshort
+    {
+        public ushort value;
+    }
+
+    public class ReferenceUint
+    {
+        public uint value;
+    }
+    namespace ZQFramwork
+    {
+        public class ReferenceUlong
+        {
+            public ulong value;
+        }
+
+        public class ReferenceFloat
+        {
+            public float value;
+        }
+
+        public class ReferenceDouble
+        {
+            public double value;
+        }
+
+        public class ReferenceBool
+        {
+            public bool value;
+        }
+
+        public class ReferenceChar
+        {
+            public char value;
+        }
+
+        public class ReferenceDecimal
+        {
+            public decimal value;
+        }
+    }
+
 }
-   

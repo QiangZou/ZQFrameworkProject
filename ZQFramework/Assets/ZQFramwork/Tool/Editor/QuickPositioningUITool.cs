@@ -4,38 +4,42 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class QuickPositioningUITool : Editor
+namespace ZQFramwork
 {
-    [MenuItem("ZQFramwork/快速定位UI %f", false, 0)]
-    public static void QuickPositioning()
+    public class QuickPositioningUITool : Editor
     {
-        if (Application.isPlaying == false)
+        [MenuItem("ZQFramwork/快速定位UI %f", false, 0)]
+        public static void QuickPositioning()
         {
-            return;
-        }
+            if (Application.isPlaying == false)
+            {
+                return;
+            }
 
-        //使焦点移动到Game视图
-        Type gameViewType = typeof(Editor).Assembly.GetType("UnityEditor.GameView");
-        EditorWindow window = EditorWindow.GetWindow(gameViewType);
-        window.Focus();
+            //使焦点移动到Game视图
+            Type gameViewType = typeof(Editor).Assembly.GetType("UnityEditor.GameView");
+            EditorWindow window = EditorWindow.GetWindow(gameViewType);
+            window.Focus();
 
 
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
-        {
-            position = Input.mousePosition
-        };
+            PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+            {
+                position = Input.mousePosition
+            };
 
-        List<RaycastResult> raycastResults = new List<RaycastResult>();
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
 
-        //获取鼠标位置所有碰撞对象
-        EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+            //获取鼠标位置所有碰撞对象
+            EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
-        if (raycastResults.Count > 0)
-        {
-            //选择第一个对象
-            Selection.activeGameObject = raycastResults[0].gameObject;
+            if (raycastResults.Count > 0)
+            {
+                //选择第一个对象
+                Selection.activeGameObject = raycastResults[0].gameObject;
 
-            EditorGUIUtility.PingObject(raycastResults[0].gameObject);
+                EditorGUIUtility.PingObject(raycastResults[0].gameObject);
+            }
         }
     }
+
 }

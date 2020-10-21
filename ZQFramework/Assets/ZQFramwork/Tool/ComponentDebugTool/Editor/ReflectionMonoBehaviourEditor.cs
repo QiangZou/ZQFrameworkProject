@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     [CustomEditor(typeof(ReflectionMonoBehaviour))]
     public class ReflectionMonoBehaviourEditor : Editor

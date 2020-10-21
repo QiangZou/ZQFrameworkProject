@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public class ConponentDebugMenu : EditorWindow
     {

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Text;
+using UnityEngine.UI;
 
 namespace ZQFramwork
 {
@@ -80,11 +81,12 @@ namespace ZQFramwork
                     continue;
                 }
 
-                UILabel[] uiLabels = prefab.GetComponentsInChildren<UILabel>(true);
+              
+                Text[] uiLabels = prefab.GetComponentsInChildren<Text>(true);
 
                 for (int j = 0; j < uiLabels.Length; j++)
                 {
-                    UILabel uiLabel = uiLabels[j];
+                    Text uiLabel = uiLabels[j];
 
                     if (Helper.IsIncludeChinese(uiLabel.text))
                     {
@@ -132,11 +134,11 @@ namespace ZQFramwork
                     continue;
                 }
 
-                UILabel[] uiLabels = prefab.GetComponentsInChildren<UILabel>(true);
+                Text[] uiLabels = prefab.GetComponentsInChildren<Text>(true);
 
                 for (int j = 0; j < uiLabels.Length; j++)
                 {
-                    UILabel uiLabel = uiLabels[j];
+                    Text uiLabel = uiLabels[j];
 
                     if (Helper.IsIncludeChinese(uiLabel.text))
                     {
@@ -190,13 +192,13 @@ namespace ZQFramwork
 
                 GameObject obj = Instantiate(prefab) as GameObject;
 
-                UILabel[] uiLabels = obj.GetComponentsInChildren<UILabel>(true);
+                Text[] uiLabels = obj.GetComponentsInChildren<Text>(true);
 
                 bool isChange = false;
 
                 for (int j = 0; j < uiLabels.Length; j++)
                 {
-                    UILabel uiLabel = uiLabels[j];
+                    Text uiLabel = uiLabels[j];
 
                     if (Helper.IsIncludeChinese(uiLabel.text))
                     {

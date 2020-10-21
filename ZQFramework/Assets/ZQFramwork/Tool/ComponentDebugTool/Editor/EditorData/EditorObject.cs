@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEditor;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public class EditorObject
     {

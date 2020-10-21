@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public class EditorArray
     {

@@ -1,4 +1,4 @@
-﻿namespace Zq.Tool
+﻿namespace ZQFramwork
 {
     public enum AccessModifier
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public class MethodData
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ZQ.AdapterTool
+namespace ZQFramwork
 {
     public static class Config
     {

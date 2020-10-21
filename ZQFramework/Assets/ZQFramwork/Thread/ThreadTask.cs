@@ -2,21 +2,26 @@
 using System.Threading;
 using UnityEngine;
 
-public class ThreadTask
+namespace ZQFramwork
 {
-    private Thread thread;
-    private Action action;
-
-    public ThreadTask(Action action)
+    public class ThreadTask
     {
-        this.action = action;
-        thread = new Thread(ThreadRun);
-        thread.Start();
-    }
+        private Thread thread;
+        private Action action;
 
-    private void ThreadRun()
-    {
-        action();
-        //Debug.LogError("线程结束");
+        public ThreadTask(Action action)
+        {
+            this.action = action;
+            thread = new Thread(ThreadRun);
+            thread.Start();
+        }
+
+        private void ThreadRun()
+        {
+            action();
+            //Debug.LogError("线程结束");
+        }
     }
 }
+
+

@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Data { }
-
-public class Demo : MonoBehaviour
+namespace ZQFramwork
 {
-    private readonly float speed;
+    public class Data { }
 
-    private Data data;
+    public class Demo : MonoBehaviour
+    {
+        private readonly float speed;
 
-    private void Start() { }
+        private Data data;
 
-    private void Play(float time) { }
+        private void Start() { }
+
+        private void Play(float time) { }
+    }
 }

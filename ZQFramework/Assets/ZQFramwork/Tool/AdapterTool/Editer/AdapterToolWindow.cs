@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ZQ.AdapterTool
+namespace ZQFramwork
 {
     public class AdapterToolWindow : EditorWindow
     {
@@ -197,3 +197,4 @@ namespace ZQ.AdapterTool
     }
 
 }
+

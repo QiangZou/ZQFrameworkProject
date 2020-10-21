@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ZQ.AdapterTool
+namespace ZQFramwork
 {
     public class Device
     {

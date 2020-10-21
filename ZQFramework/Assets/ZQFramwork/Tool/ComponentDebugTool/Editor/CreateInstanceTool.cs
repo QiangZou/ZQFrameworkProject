@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Reflection;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public static class CreateInstanceTool
     {

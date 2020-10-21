@@ -17,7 +17,7 @@ namespace ZQFramwork
 
             if (GUILayout.Button("Play"))
             {
-                ShowModelUIManager.GetSingleton().WatchModle(ShowModelUIManager.GetSingleton().mUITexture, ShowModelUIManager.GetSingleton().mGameObject);
+                ShowModelUIManager.GetSingleton().WatchModle(ShowModelUIManager.GetSingleton().mGameObject);
             }
         }
     }
@@ -42,7 +42,7 @@ namespace ZQFramwork
 
         public RenderTexture mRenderTexture;
 
-        public UITexture mUITexture;
+        //public UITexture mUITexture;
 
         public GameObject mGameObject;
 
@@ -86,13 +86,14 @@ namespace ZQFramwork
             tempCamera.targetTexture = mRenderTexture;
         }
 
-        public void WatchModle(UITexture varUITexture, GameObject varObject)
+        //public void WatchModle(UITexture varUITexture, GameObject varObject)
+        public void WatchModle(GameObject varObject)
         {
-            if (varUITexture == null)
-            {
-                Debug.Log("ShowModelUIManager : WatchModle() varUITexture == null");
-                return;
-            }
+            //if (varUITexture == null)
+            //{
+            //    Debug.Log("ShowModelUIManager : WatchModle() varUITexture == null");
+            //    return;
+            //}
 
             if (varObject == null)
             {
@@ -100,15 +101,15 @@ namespace ZQFramwork
                 return;
             }
 
-            mUITexture = varUITexture;
+            //mUITexture = varUITexture;
 
             mGameObject = varObject;
 
-            mUITexture.mainTexture = mRenderTexture;
+            //mUITexture.mainTexture = mRenderTexture;
 
             mGameObject.transform.SetParent(this.transform);
 
-            NGUITools.SetLayer(this.gameObject, LayerMask.NameToLayer(mLayer));
+            //NGUITools.SetLayer(this.gameObject, LayerMask.NameToLayer(mLayer));
         }
     }
 

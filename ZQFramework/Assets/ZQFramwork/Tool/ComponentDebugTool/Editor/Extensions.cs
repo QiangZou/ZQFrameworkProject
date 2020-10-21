@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public static class Extensions
     {

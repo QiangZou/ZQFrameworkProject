@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Zq.Tool
+namespace ZQFramwork
 {
     public static class TypeTool
     {
