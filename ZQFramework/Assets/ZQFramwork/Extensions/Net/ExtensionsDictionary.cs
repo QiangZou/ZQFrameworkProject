@@ -5,7 +5,7 @@ namespace ZQFramwork
     public static class ExtensionsDictionary
     {
         /// <summary>
-        /// 添加(安全) 
+        /// 添加(安全) 如已经有key则添加失败
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <typeparam name="TValue"></typeparam>
@@ -25,7 +25,7 @@ namespace ZQFramwork
         }
 
         /// <summary>
-        /// 更新(安全)
+        /// 更新(安全) 如没有key则更新失败
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <typeparam name="TValue"></typeparam>
@@ -43,27 +43,6 @@ namespace ZQFramwork
             self[key] = value;
             return true;
         }
-
-        /// <summary>
-        /// 添加或更新
-        /// </summary>
-        /// <typeparam name="TKey"></typeparam>
-        /// <typeparam name="TValue"></typeparam>
-        /// <param name="self"></param>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public static void AddOrUpdate<TKey, TValue>(this Dictionary<TKey, TValue> self, TKey key, TValue value)
-        {
-            if (self.ContainsKey(key))
-            {
-                self[key] = value;
-            }
-            else
-            {
-                self.Add(key, value);
-            }
-        }
-
     }
 
 }

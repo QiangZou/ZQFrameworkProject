@@ -10,10 +10,10 @@ namespace ZQFramwork
     /// </summary>
     public class PreviewTool
     {
-        static readonly string windowManagerPath = "Assets/Resources/WinodwManager.prefab";
+        static readonly string windowManagerPath = "Assets/ZQFramwork/Resources/WinodwManager.prefab";
         static Transform root;
 
-        [MenuItem("ZQFramwork/工具/预览/ &p")]
+        [MenuItem("ZQFramwork/工具/预览/ &q")]
         static void PreviewGameObject()
         {
             if (Application.isPlaying == true)
@@ -36,7 +36,7 @@ namespace ZQFramwork
                 return;
             }
 
-            Object target = PrefabUtility.InstantiatePrefab(obj);//实例化对象 保留引用
+            GameObject target = PrefabUtility.InstantiatePrefab(obj) as GameObject;//实例化对象 保留引用
             if (target == null)
             {
                 Debug.LogError("实例化对象失败");
@@ -45,7 +45,11 @@ namespace ZQFramwork
 
             Transform root = GetRootTransform();
 
-            (target as GameObject).transform.SetParent(root, false);
+            target.transform.SetParent(root, false);
+
+            Selection.activeGameObject = target;//选中
+            EditorGUIUtility.PingObject(target);//ping
+
         }
 
         static Transform GetRootTransform()
