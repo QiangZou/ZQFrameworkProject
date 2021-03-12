@@ -5,30 +5,30 @@ namespace ZQFramwork
 {
     public class PoolManager : MonoBehaviour
     {
-        protected static PoolManager mInstance = null;
+        protected static PoolManager instance = null;
 
         public static PoolManager Instance
         {
             get
             {
-                if (mInstance == null)
+                if (instance == null)
                 {
                     GameObject poolManager = new GameObject("PoolManager");
 
-                    mInstance = poolManager.AddComponent<PoolManager>();
+                    instance = poolManager.AddComponent<PoolManager>();
 
                     DontDestroyOnLoad(poolManager);
                 }
 
-                return mInstance;
+                return instance;
             }
         }
 
-        public Dictionary<string, PrefabPool> AllPrefabPool = new Dictionary<string, PrefabPool>();
+        private Dictionary<string, PrefabPool> allPrefabPool = new Dictionary<string, PrefabPool>();
 
         public PrefabPool CreationPool(string name, Transform prefab, int preloadAmount)
         {
-            if (AllPrefabPool.ContainsKey(name))
+            if (allPrefabPool.ContainsKey(name))
             {
                 Debug.LogError("创建重复的对象池:" + name);
                 return null;
@@ -36,14 +36,9 @@ namespace ZQFramwork
 
             PrefabPool prefabPool = new PrefabPool(prefab, preloadAmount);
 
-            AllPrefabPool.Add(name, new PrefabPool(prefab, preloadAmount));
+            allPrefabPool.Add(name, new PrefabPool(prefab, preloadAmount));
 
             return prefabPool;
-        }
-
-        void Awake()
-        {
-            //transform.gameObject.SetActive(false);
         }
     }
 }
