@@ -6,7 +6,7 @@ namespace ZQFramwork
     /// <summary>
     /// 时间工具
     /// </summary>
-    public static class TimeUtil
+    public static class ConvertTimeTool
     {
         private static readonly string Year = "年";
         private static readonly string Month = "月";

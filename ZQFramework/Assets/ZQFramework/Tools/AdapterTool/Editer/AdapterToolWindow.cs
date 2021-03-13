@@ -29,7 +29,7 @@ namespace ZQFramwork
             GameObject canvasGameObject = new GameObject("Canvas");
             Canvas canvas = canvasGameObject.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            CanvasScaler canvasScaler = canvasGameObject.AddComponent<CanvasScaler>();
+            canvasGameObject.AddComponent<CanvasScaler>();
 
             GameObject imageGameObject = new GameObject("Image");
             imageGameObject.transform.parent = canvasGameObject.transform;

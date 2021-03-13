@@ -1,5 +1,4 @@
-﻿
-namespace ZQFramwork
+﻿namespace ZQFramwork
 {
     public class ReferenceString
     {
@@ -40,37 +39,34 @@ namespace ZQFramwork
     {
         public uint value;
     }
-    namespace ZQFramwork
+
+    public class ReferenceUlong
     {
-        public class ReferenceUlong
-        {
-            public ulong value;
-        }
-
-        public class ReferenceFloat
-        {
-            public float value;
-        }
-
-        public class ReferenceDouble
-        {
-            public double value;
-        }
-
-        public class ReferenceBool
-        {
-            public bool value;
-        }
-
-        public class ReferenceChar
-        {
-            public char value;
-        }
-
-        public class ReferenceDecimal
-        {
-            public decimal value;
-        }
+        public ulong value;
     }
 
+    public class ReferenceFloat
+    {
+        public float value;
+    }
+
+    public class ReferenceDouble
+    {
+        public double value;
+    }
+
+    public class ReferenceBool
+    {
+        public bool value;
+    }
+
+    public class ReferenceChar
+    {
+        public char value;
+    }
+
+    public class ReferenceDecimal
+    {
+        public decimal value;
+    }
 }

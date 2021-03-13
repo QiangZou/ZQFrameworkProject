@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ZQFramwork
 {
-    public static class NumberUtil
+    public static class ConvertNumberTool
     {
         private static readonly string Zero = "零";
         private static readonly string One = "一";
@@ -25,17 +25,16 @@ namespace ZQFramwork
         private static readonly string TenMillion = "千万";
         private static readonly string AHundredMillion = "亿";
 
-        private static readonly string OneTraditional = "壹";
-        private static readonly string TwoTraditional = "贰";
-        private static readonly string ThreeTraditional = "叁";
-        private static readonly string FourTraditional = "肆";
-        private static readonly string FiveTraditional = "伍";
-        private static readonly string SixTraditional = "陆";
-        private static readonly string SevenTraditional = "柒";
-        private static readonly string EightTraditional = "捌";
-        private static readonly string NineTraditional = "玖";
+        //private static readonly string OneTraditional = "壹";
+        //private static readonly string TwoTraditional = "贰";
+        //private static readonly string ThreeTraditional = "叁";
+        //private static readonly string FourTraditional = "肆";
+        //private static readonly string FiveTraditional = "伍";
+        //private static readonly string SixTraditional = "陆";
+        //private static readonly string SevenTraditional = "柒";
+        //private static readonly string EightTraditional = "捌";
+        //private static readonly string NineTraditional = "玖";
 
-        private static readonly string[] numberArray = { Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine };
 
         private static readonly Dictionary<ulong, string> numberDic = new Dictionary<ulong, string>()
         {
