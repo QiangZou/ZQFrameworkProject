@@ -9,91 +9,156 @@
 
 ## 目录结构
 
-├─AssetManager 资源管理
-│      AssetBundleManager.cs
-│      AssetManager.cs
-│      DeviceDownloadAssetBundle.cs
-│      DownloadManager.cs
-│      IAssetLoad.cs
-│      ResourcesManager.cs
-│      UnityDefault.cs
-│      UnityLocalAssetBundle.cs
-│
-├─Component 独立组件
-│      AwakeToDisable.cs 激活自动隐藏
-│      TouchControl.cs 摇杆控制器
-│      ZQBaseBehaviour.cs 
-│
-├─Extensions 扩展类
-├─Module 模块
-│      BaseController.cs
-│      BaseModel.cs
-│      BaseModelData.cs
-│      BaseView.cs
-│      BaseViewData.cs
-│      ModuleDefine.cs
-│      ModuleDefineConfig.cs
-│      ModuleID.cs
-│      MVCManager.cs
-│
-├─ObjectPool 对象池
-│      IPool.cs
-│      PoolManager.cs
-│      PrefabPool.cs
-│
-├─Plugins 插件
-│  ├─JsonFx 
-│  │      JsonFx.Json.dll
-│  │      License.txt
-│  │      Readme.txt
-│  │
-│  └─VPTimer
-│          VPTimer.cs
-│          VPTimeUtility.cs
-│
-├─Script 单功能脚本
-│      EnumComparer.cs
-│      EventBase.cs
-│      Helper.cs
-│      LoadManager.cs
-│      Loom.cs
-│      PathTool.cs
-│      ShowModelUIManager.cs
-│      SimpleReferenceType.cs
-│      ThreadTask.cs
-│      WindowManager.cs
-│
-├─Singleton 单例
-│      ISingleton.cs
-│      MonoSingleton.cs
-│      MonoSingletonCreator.cs
-│      MonoSingletonPath.cs
-│      MonoSingletonProperty.cs
-│      Singleton.cs
-│      SingletonCreator.cs
-│      SingletonProperty.cs
-│
-└─Tools 工具 
-    │  ConvertNumberTool.cs 
-    │  ConvertTimeTool.cs
+ZQFramework
 
-​    ├─AdapterTool 适配工具
-​    ├─ComponentDebugTool 组件调试工具
-​    ├─Editor
-​    │      AssetBundlesTool.cs
-​    │      AutoCompilePlay.cs 自动编译启动
-​    │      CheckIllegalFileNamesTool.cs
-​    │      CreateBaseClassTool.cs
-​    │      EditorCoroutineLooper.cs
-​    │      EditorHelper.cs
-​    │      FindreAssetFerencesTool.cs
-​    │      PrefabsTool.cs
-​    │      PreviewTool.cs
-​    │      QuickPositioningUITool.cs 快速定位UI工具
-​    │      ScriptsTool.cs 
-​    │      ShowAllGUIStyle.cs 查看所有GUI样式
-​    │
-​    └─ProjectManagerTools 项目管理工具
+- AssetManager 资源管理
+  - AssetBundleManager.cs
+  - AssetManager.cs
+  - DeviceDownloadAssetBundle.cs
+  - DownloadManager.cs
+  - IAssetLoad.cs
+  - ResourcesManager.cs
+  - UnityDefault.cs
+  - UnityLocalAssetBundle.cs
+- Component 组件
+  - AwakeToDisable.cs
+  - TouchControl.cs
+  - ZQBaseBehaviour.cs
+- Extensions 扩展
+  - Net
+    - ExtensionsDictionary.cs
+    - ExtensionsList.cs
+    - ExtensionsString.cs
+  - UnityEngine
+    - ExtensionsComponent.cs
+    - ExtensionsGameObject.cs
+    - ExtensionsTransform.cs
+- Module 模块框架
+  - BaseController.cs
+  - BaseModel.cs
+  - BaseModelData.cs
+  - BaseView.cs
+  - BaseViewData.cs
+  - ModuleDefine.cs
+  - ModuleDefineConfig.cs
+  - ModuleID.cs
+  - MVCManager.cs
+- ObjectPool 对象池
+  - IPool.cs
+  - PoolManager.cs
+  - PrefabPool.cs
+- Plugins 插件
+  - JsonFx
+    - JsonFx.Json.dll
+    - License.txt
+    - Readme.txt
+  - VPTimer
+    - VPTimer.cs
+    - VPTimeUtility.cs
+- Script 单功能脚本
+  - EnumComparer.cs 
+  - EventBase.cs
+  - Helper.cs
+  - LoadManager.cs
+  - Loom.cs
+  - PathTool.cs
+  - ShowModelUIManager.cs
+  - SimpleReferenceType.cs
+  - ThreadTask.cs
+  - WindowManager.cs
+- Singleton 单例
+  - ISingleton.cs
+  - MonoSingleton.cs
+  - MonoSingletonCreator.cs
+  - MonoSingletonPath.cs
+  - MonoSingletonProperty.cs
+  - Singleton.cs
+  - SingletonCreator.cs
+  - SingletonProperty.cs
+- Tools 
+  - AdapterTool 适配工具
+    - Editer
+      - AdapterToolWindow.cs
+      - Config.cs
+      - Device.cs
+      - ScreenOrientation.cs
+  - ComponentDebugTool 组件调试工具
+    - Editor
+      - Data
+        - Enum
+          - AccessModifier.cs
+          - InstanceType.cs
+          - MemberFilter.cs
+        - ArrayData.cs
+        - ClassData.cs
+        - DictionaryData.cs
+        - FieldData.cs
+        - ListData.cs
+        - MethodData.cs
+        - ObjectData.cs
+        - ParameterData.cs
+      - EditorData
+        - EditorArray.cs
+        - EditorClass.cs
+        - EditorDictionary.cs
+        - EditorField.cs
+        - EditorInstance.cs
+        - EditorList.cs
+        - EditorMethod.cs
+        - EditorObject.cs
+        - EditorParameter.cs
+      - Input
+        - SimpleType
+          - bool.cs
+          - byte.cs
+          - char.cs
+          - decimal.cs
+          - double.cs
+          - float.cs
+          - int.cs
+          - long.cs
+          - sbyte.cs
+          - short.cs
+          - string.cs
+          - uint.cs
+          - ulong.cs
+          - ushort.cs
+        - InputTool.cs
+      - ConponentDebugMenu.cs
+      - ConponentDebugWindow.cs
+      - CreateInstanceTool.cs
+      - Extensions.cs
+      - ReflectionMonoBehaviourEditor.cs
+      - TypeTool.cs
+    - Example
+      - Demo.cs
+      - Example.cs
+      - Example.unity
+    - ReflectionMonoBehaviour.cs
+  - Editor 编辑器工具
+    - AssetBundlesTool.cs
+    - AutoCompilePlay.cs
+    - CheckIllegalFileNamesTool.cs
+    - CreateBaseClassTool.cs
+    - CreateFileTree.cs
+    - EditorCoroutineLooper.cs
+    - EditorHelper.cs
+    - FindreAssetFerencesTool.cs
+    - PrefabsTool.cs
+    - PreviewTool.cs
+    - QuickPositioningUITool.cs
+    - ScriptsTool.cs
+    - ShowAllGUIStyle.cs
+  - ProjectManagerTools 项目管理工具
+    - Editor
+      - Folders.cs
+      - FoldersTool.cs
+      - ProjectManagerConfig.cs
+      - ProjectManagerConfigManager.cs
+      - ProjectManagerWindow.cs
+    - ProjectManagerConfig.asset
+  - ConvertNumberTool.cs
+  - ConvertTimeTool.cs
 
 ## 代码命名规范
 - 帕斯卡命名法（首字母大写）

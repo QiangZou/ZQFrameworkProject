@@ -1,0 +1,201 @@
+- ZQFramework
+  - AssetManager
+    - AssetBundleManager.cs
+    - AssetManager.cs
+    - DeviceDownloadAssetBundle.cs
+    - DownloadManager.cs
+    - IAssetLoad.cs
+    - ResourcesManager.cs
+    - UnityDefault.cs
+    - UnityLocalAssetBundle.cs
+  - Component
+    - AwakeToDisable.cs
+    - TouchControl.cs
+    - ZQBaseBehaviour.cs
+  - Extensions
+    - Net
+      - ExtensionsDictionary.cs
+      - ExtensionsList.cs
+      - ExtensionsString.cs
+    - UnityEngine
+      - ExtensionsComponent.cs
+      - ExtensionsGameObject.cs
+      - ExtensionsTransform.cs
+  - Module
+    - BaseController.cs
+    - BaseModel.cs
+    - BaseModelData.cs
+    - BaseView.cs
+    - BaseViewData.cs
+    - ModuleDefine.cs
+    - ModuleDefineConfig.cs
+    - ModuleID.cs
+    - MVCManager.cs
+  - ObjectPool
+    - IPool.cs
+    - PoolManager.cs
+    - PrefabPool.cs
+  - Plugins
+    - JsonFx
+      - JsonFx.Json.dll
+      - License.txt
+      - Readme.txt
+    - VPTimer
+      - VPTimer.cs
+      - VPTimeUtility.cs
+  - Resources
+    - Modules
+      - Login
+        - Login.prefab
+        - LoginController.cs
+        - LoginModel.cs
+        - LoginModelData.cs
+        - LoginView.cs
+        - LoginViewData.cs
+      - Main
+        - Main.prefab
+        - MainController.cs
+        - MainModel.cs
+        - MainModelData.cs
+        - MainView.cs
+        - MainViewData.cs
+      - Player
+        - PlayerController.cs
+        - PlayerModel.cs
+        - PlayerModelData.cs
+        - PlayerView.cs
+        - PlayerViewData.cs
+      - Store
+        - StoreController.cs
+        - StoreModel.cs
+        - StoreModelData.cs
+        - StoreView.cs
+        - StoreViewData.cs
+      - GameStart.cs
+    - WinodwManager.prefab
+  - Script
+    - EnumComparer.cs
+    - EventBase.cs
+    - Helper.cs
+    - LoadManager.cs
+    - Loom.cs
+    - PathTool.cs
+    - ShowModelUIManager.cs
+    - SimpleReferenceType.cs
+    - ThreadTask.cs
+    - WindowManager.cs
+  - Singleton
+    - ISingleton.cs
+    - MonoSingleton.cs
+    - MonoSingletonCreator.cs
+    - MonoSingletonPath.cs
+    - MonoSingletonProperty.cs
+    - Singleton.cs
+    - SingletonCreator.cs
+    - SingletonProperty.cs
+  - Tools
+    - AdapterTool
+      - Asset
+        - iPhone 11 Pro Max_0.png
+        - iPhone 11 Pro Max_1.png
+        - iPhone 11 Pro Max_2.png
+        - iPhone 11 Pro_0.png
+        - iPhone 11 Pro_1.png
+        - iPhone 11 Pro_2.png
+        - iPhone 11_0.png
+        - iPhone 11_1.png
+        - iPhone 11_2.png
+        - iPhone XR_0.png
+        - iPhone XR_1.png
+        - iPhone XR_2.png
+        - iPhone XS Max_0.png
+        - iPhone XS Max_1.png
+        - iPhone XS Max_2.png
+        - iPhone XS_0.png
+        - iPhone XS_1.png
+        - iPhone XS_2.png
+        - iPhone X_0.png
+        - iPhone X_1.png
+        - iPhone X_2.png
+      - Editer
+        - AdapterToolWindow.cs
+        - Config.cs
+        - Device.cs
+        - ScreenOrientation.cs
+    - ComponentDebugTool
+      - Editor
+        - Data
+          - Enum
+            - AccessModifier.cs
+            - InstanceType.cs
+            - MemberFilter.cs
+          - ArrayData.cs
+          - ClassData.cs
+          - DictionaryData.cs
+          - FieldData.cs
+          - ListData.cs
+          - MethodData.cs
+          - ObjectData.cs
+          - ParameterData.cs
+        - EditorData
+          - EditorArray.cs
+          - EditorClass.cs
+          - EditorDictionary.cs
+          - EditorField.cs
+          - EditorInstance.cs
+          - EditorList.cs
+          - EditorMethod.cs
+          - EditorObject.cs
+          - EditorParameter.cs
+        - Input
+          - SimpleType
+            - bool.cs
+            - byte.cs
+            - char.cs
+            - decimal.cs
+            - double.cs
+            - float.cs
+            - int.cs
+            - long.cs
+            - sbyte.cs
+            - short.cs
+            - string.cs
+            - uint.cs
+            - ulong.cs
+            - ushort.cs
+          - InputTool.cs
+        - ConponentDebugMenu.cs
+        - ConponentDebugWindow.cs
+        - CreateInstanceTool.cs
+        - Extensions.cs
+        - ReflectionMonoBehaviourEditor.cs
+        - TypeTool.cs
+      - Example
+        - Demo.cs
+        - Example.cs
+        - Example.unity
+      - ReflectionMonoBehaviour.cs
+    - Editor
+      - AssetBundlesTool.cs
+      - AutoCompilePlay.cs
+      - CheckIllegalFileNamesTool.cs
+      - CreateBaseClassTool.cs
+      - CreateFileTree.cs
+      - EditorCoroutineLooper.cs
+      - EditorHelper.cs
+      - FindreAssetFerencesTool.cs
+      - PrefabsTool.cs
+      - PreviewTool.cs
+      - QuickPositioningUITool.cs
+      - ScriptsTool.cs
+      - ShowAllGUIStyle.cs
+    - ProjectManagerTools
+      - Editor
+        - Folders.cs
+        - FoldersTool.cs
+        - ProjectManagerConfig.cs
+        - ProjectManagerConfigManager.cs
+        - ProjectManagerWindow.cs
+      - ProjectManagerConfig.asset
+    - ConvertNumberTool.cs
+    - ConvertTimeTool.cs
