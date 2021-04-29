@@ -6,9 +6,13 @@ namespace ZQFramwork
 {
     public class BaseView : ZQBaseBehaviour
     {
-        public ViewType viewType;
-
+        protected BaseModel model;
         public BaseViewData baseViewData;
+
+        public void SetModel(ModuleID moduleID)
+        {
+            model = MVCManager.Me.GetModel(moduleID);
+        }
 
         public virtual void Bind()
         {

@@ -6,13 +6,48 @@ namespace ZQFramwork
 {
     public class BaseModel
     {
-        protected BaseModelData baseModelData;
-        protected BaseViewData baseViewData;
+        public ModuleID moduleID;
+
+        private BaseModelData baseModelData;
+        public BaseModelData BaseModelData
+        {
+            get
+            {
+                if (baseModelData == null)
+                {
+                    baseModelData = MVCManager.Me.GetBaseModelData(this.moduleID);
+                }
+                return baseModelData;
+            }
+        }
+
+
+        private BaseViewData baseViewData;
+        public BaseViewData BaseViewData
+        {
+            get
+            {
+                if (baseViewData == null)
+                {
+                    baseViewData = MVCManager.Me.GetBaseViewData(this.moduleID);
+                }
+                return baseViewData;
+            }
+        }
+
+     
+
+        public BaseModel() { }
+
+        public BaseModel(ModuleID moduleID)
+        {
+            this.moduleID = moduleID;
+        }
 
         public BaseModel(BaseViewData baseViewData, BaseModelData baseModelData)
         {
-            this.baseViewData = baseViewData;
-            this.baseModelData = baseModelData;
+            //this.BaseViewData = baseViewData;
+            //this.BaseModelData = baseModelData;
         }
 
         public virtual void Bind()

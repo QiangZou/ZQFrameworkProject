@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace ZQFramwork
 {
@@ -42,6 +43,23 @@ namespace ZQFramwork
         public static int RemoveAll<T>(this List<T> self, T value)
         {
             return self.RemoveAll(i => i.Equals(value));
+        }
+
+        private static StringBuilder stringBuilder = new StringBuilder(1024);
+        public static string GetString<T>(this List<T> self)
+        {
+            if (self == null)
+            {
+                return "List is null";
+            }
+
+            stringBuilder.Length = 0;
+            for (int i = 0; i < self.Count; i++)
+            {
+                stringBuilder.AppendFormat("Key:{0} Value:{1}\n", i.ToString(), self[i] != null ? self[i].ToString() : "null");
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }

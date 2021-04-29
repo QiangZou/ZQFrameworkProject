@@ -108,8 +108,8 @@ namespace ZQFramwork
 
             GameObject window = Instantiate(prefab as GameObject, root.transform);
 
-            BaseView baseView = window.GetComponent<BaseView>();
-            ViewType viewType = baseView.viewType;
+            //BaseView baseView = window.GetComponent<BaseView>();
+            ViewType viewType = ViewType.OneLevel;
 
             //解耦
             switch (viewType)

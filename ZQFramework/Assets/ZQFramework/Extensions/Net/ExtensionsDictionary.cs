@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace ZQFramwork
 {
@@ -42,6 +43,23 @@ namespace ZQFramwork
 
             self[key] = value;
             return true;
+        }
+
+        private static StringBuilder stringBuilder = new StringBuilder(1024);
+        public static string GetString<TKey, TValue>(this Dictionary<TKey, TValue> self)
+        {
+            if (self == null)
+            {
+                return "Dictionary is null";
+            }
+
+            stringBuilder.Length = 0;
+            foreach (var item in self)
+            {
+                stringBuilder.AppendFormat("Key:{0} Value:{1}\n", item.Key.ToString(), item.Value != null ? item.Value.ToString() : "null");
+            }
+
+            return stringBuilder.ToString();
         }
     }
 

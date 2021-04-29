@@ -8,7 +8,7 @@ namespace ZQFramwork
         public static GameObject Clone(this GameObject self, string name = "", bool active = true)
         {
             GameObject gameObject = GameObject.Instantiate(self) as GameObject;
-            gameObject.transform.parent = self.transform.parent;
+            gameObject.transform.SetParent(self.transform.parent);
             gameObject.transform.localScale = self.transform.localScale;
 
             if (name != "")

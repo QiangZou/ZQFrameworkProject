@@ -5,7 +5,7 @@
         None = 0,
         Login = 1,
         Main = 2,
-
+        Game2048,
 
     }
 }

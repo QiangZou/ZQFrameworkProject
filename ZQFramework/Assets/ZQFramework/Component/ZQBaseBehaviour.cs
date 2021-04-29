@@ -10,7 +10,7 @@ namespace ZQFramwork
         private bool isAwakeToDisable = false;
         protected virtual void Awake()
         {
-            Debug.Log(transform.name + " Awake");
+            //Debug.Log(transform.name + " Awake");
             if (isAwakeToDisable && gameObject.activeSelf == true)
             {
                 gameObject.SetActive(false);
@@ -18,11 +18,11 @@ namespace ZQFramwork
         }
         protected virtual void OnEnable()
         {
-            Debug.Log(transform.name + " OnEnable");
+            //Debug.Log(transform.name + " OnEnable");
         }
         protected virtual void Start()
         {
-            Debug.Log(transform.name + " Start");
+            //Debug.Log(transform.name + " Start");
         }
         protected virtual void Update()
         {
@@ -30,11 +30,11 @@ namespace ZQFramwork
         }
         protected virtual void OnDisable()
         {
-            Debug.Log(transform.name + " OnDisable");
+            //Debug.Log(transform.name + " OnDisable");
         }
         protected virtual void OnDestroy()
         {
-            Debug.Log(transform.name + " OnDestroy");
+            //Debug.Log(transform.name + " OnDestroy");
         }
     }
 }

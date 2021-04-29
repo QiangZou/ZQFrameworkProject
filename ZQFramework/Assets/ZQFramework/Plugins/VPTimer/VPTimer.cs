@@ -571,7 +571,7 @@ public class VPTimer : MonoBehaviour
 #if (UNITY_EDITOR && DEBUG)
 			msg += MethodInfo;
 #endif
-			//Log.Error(msg);
+			UnityEngine.Debug.LogError(msg);
 
 		}
 
